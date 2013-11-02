@@ -1,0 +1,126 @@
+﻿<Window x:Class="BitEd.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uControl="clr-namespace:BitEd"
+        Title="MainWindow" Height="350" Width="525" Background="#131313"
+        Icon="icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition/>
+            <RowDefinition Height="32px"/>
+        </Grid.RowDefinitions>
+        <!--Menu Strip-->
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+
+                <MenuItem Header="New"/>
+                <MenuItem Header="Open"/>
+                <MenuItem Header="Recent Projects"/>
+                <MenuItem Header="Close"/>
+                <MenuItem Header="Save"/>
+                <MenuItem Header="Save As.."/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo"/>
+                <MenuItem Header="Redo"/>
+                <MenuItem Header="Delete"/>
+                <MenuItem Header="Clone"/>
+                <MenuItem Header="Move"/>
+                <MenuItem Header="Rotate"/>
+                <MenuItem Header="Scale"/>
+                <MenuItem Header="Transform.."/>
+                <MenuItem Header="Editor Preferences.."/>
+            </MenuItem>
+            <MenuItem Header="Asset">
+                <MenuItem Header="Create Sprite"/>
+                <MenuItem Header="Create Tile"/>
+                <MenuItem Header="Create Object"/>
+                <MenuItem Header="Find Asset"/>
+                <MenuItem Header="Collapse Asset Tree"/>
+                <MenuItem Header="Expand Asset Tree"/>
+            </MenuItem>
+            <MenuItem Header="Entity">
+                <MenuItem Header="Freeze Entity"/>
+                <MenuItem Header="Hide Entity"/>
+                <MenuItem Header="Remove Entity"/>
+            </MenuItem>
+            <MenuItem Header="Select">
+                <MenuItem Header="Select All"/>
+                <MenuItem Header="Select None"/>
+                <MenuItem Header="Select Inverse"/>
+                <MenuItem Header="Select Frozen"/>
+                <MenuItem Header="Select Hidden"/>
+                <MenuItem Header="Select All Instances"/>
+                <MenuItem Header="Set Selection Set.."/>
+                <MenuItem Header="Get Selection Set.."/>
+            </MenuItem>
+            <MenuItem Header="Game">
+                <MenuItem Header="Game Config.."/>
+                <MenuItem Header="Project Info.."/>
+                <MenuItem Header="Run"/>
+                <MenuItem Header="Run in Debug"/>
+                <MenuItem Header="Set Device.."/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About"/>
+                <MenuItem Header="Website"/>
+                <MenuItem Header="Knowledge Base"/>
+            </MenuItem>
+        </Menu>
+        <!--~Menu Strip-->
+        <!--Toolbar-->
+        <Label Padding="0" Content="Toolbar" Grid.Row="1" Background="#4f4f4f"/>
+        <!--~Toolbar-->
+        <!--ContentSection-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180px"/>
+                <ColumnDefinition Width="32px"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="220px"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <!--Small hack to enable min Height-->
+                    <RowDefinition Height="*" MinHeight="80" />
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="10000*" MinHeight="80" />
+                </Grid.RowDefinitions>
+                <!--Assets-->
+                <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Project" Margin="0,4,4,0">
+                    <Label Content="ProjectTree"/>
+                </ContentControl>
+                <!--~Assets-->
+                <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" 
+                            HorizontalAlignment="Stretch" Background="#131313">
+                </GridSplitter>
+
+                <!--<ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Directory" Margin="0,4,4,0" Grid.Row="2">
+                    <Label Content="DirectoryView"/>
+                </ContentControl>-->
+
+            </Grid>
+            <Label Grid.Column="1" Content="Tool" Background="#404040" Margin="0,4,4,0"/>
+            <!--Edit-->
+            <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Foo" Grid.Column="2" Margin="0,4,4,0">
+                <Label Content="Lol333"/>
+            </ContentControl>
+            <!--~Edit-->
+            <!--~Assets/propeditor-->
+            <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Inspector" Margin="0,4,4,0" Grid.Column="4">
+                <Label Content="Inspector"/>
+            </ContentControl>
+        </Grid>
+        <!--~ContentSection-->
+        <!--StatusBar-->
+        <StatusBar Grid.Row="3" Background="#404040" Margin="0,4,0,0">
+            <StatusBarItem>
+                <TextBlock Text="Lol"/>
+            </StatusBarItem>
+        </StatusBar>
+        <!--~StatusBar-->
+    </Grid>
+</Window>

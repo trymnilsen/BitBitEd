@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="EditorControlContainerStyle">
+        <Grid Background="#404040">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18px"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DockPanel>
+                <Border Name="TabOrangeBorder" BorderBrush="#535353" BorderThickness="1,1,1,0" DockPanel.Dock="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{TemplateBinding Property=ContentControl.Tag}" Padding="5,0,10,0"/>
+                    </StackPanel>
+                </Border>  
+                <Border Name="TabAreaBottomBorder" BorderBrush="#535353" BorderThickness="0,0,0,1" DockPanel.Dock="Right">
+                    <Border BorderThickness="1,0,0,1" BorderBrush="#131313">
+                        <Border BorderThickness="1,1,1,0" BorderBrush="#3f3f3f">
+                            <Label Background="#313131"/>
+                        </Border>
+                    </Border>
+                </Border>
+            </DockPanel>
+            <Border Name="ContentOrangeBorder" BorderBrush="#535353" BorderThickness="1,0,1,1" Grid.Row="1">
+                <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}"/>
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="TabOrangeBorder" Property="BorderBrush" Value="Orange"/>
+                <Setter TargetName="ContentOrangeBorder" Property="BorderBrush" Value="Orange"/>
+                <Setter TargetName="TabAreaBottomBorder" Property="BorderBrush" Value="Orange"/>
+                
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>
