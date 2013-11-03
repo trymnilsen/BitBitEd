@@ -58,11 +58,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\BindingProxy.cs" />
+    <Compile Include="Core\ParamCommand.cs" />
+    <Compile Include="DirectoryBrowser.xaml.cs">
+      <DependentUpon>DirectoryBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DirectoryEntry.cs" />
     <Compile Include="Models\Entity\EntityNode.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\ModelService.cs" />
     <Compile Include="ViewModels\DirectoryViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\ScreenViewModel.cs" />
     <Compile Include="ViewModels\ToolboxViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Page Include="DirectoryBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditorControlContainerStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -79,6 +92,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ScrollbarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -110,10 +131,16 @@
   <ItemGroup>
     <Folder Include="Converter\" />
     <Folder Include="Models\Inspector\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dirFile16W.png" />
+    <Resource Include="Resources\dirFolder16W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dirFolder16B.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

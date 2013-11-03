@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="BitEd.DirectoryBrowser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodels="clr-namespace:BitEd.ViewModels"
+             xmlns:model="clr-namespace:BitEd.Models"
+             xmlns:core="clr-namespace:BitEd.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="180">
+    <UserControl.DataContext>
+        <viewmodels:DirectoryViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding DirectoryPath}"/>
+        <ListBox ItemsSource="{Binding DirectoryListing}" Grid.Row="1" Background="Transparent" BorderThickness="0">
+            <!--Resources-->
+            <ListBox.Resources>
+                <BitmapImage x:Key="FolderImageThumbnail" UriSource="Resources/dirFolder16W.png"/>
+                <BitmapImage x:Key="FileImageThumbnail" UriSource="Resources/dirFile16W.png"/>
+                <core:BindingProxy x:Key="DataContextProxy" ProxyData="{Binding}"/>
+            </ListBox.Resources>
+            <!--Listbox template (for tinkering with the scrollbar)-->
+            <ListBox.Template>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Grid>
+                        <ScrollViewer Template="{StaticResource ResourceKey=ScrollViewerDarkControlTemplate}">
+                            <ItemsPresenter/>
+                        </ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </ListBox.Template>
+            <!--Item Template-->
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type model:DirectoryEntry}">
+                    <DockPanel Background="Transparent" Width="180px">
+                        <Image Width="16" Height="16" DockPanel.Dock="Left">
+                            <Image.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFolder}" Value="True">
+                                            <Setter Property="Image.Source" Value="Resources/dirFolder16B.png"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsFolder}" Value="False">
+                                            <Setter Property="Image.Source" Value="Resources/dirFile16W.png"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Label Content="{Binding Name}" Padding="2,1,0,0" DockPanel.Dock="Right">
+                            <Label.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding ProxyData.ClickDirectory, Source={StaticResource DataContextProxy}}" CommandParameter="{Binding}"/>
+                            </Label.InputBindings>
+                        </Label>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+    </Grid>
+</UserControl>
