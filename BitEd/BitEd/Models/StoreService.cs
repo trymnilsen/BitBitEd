@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BitEd.Models
 {
-    static class ModelService
+    static class StoreService
     {
         private static object threadLock = new object();
 
-        public static Dictionary<string, Model> modelRepo = new Dictionary<string, Model>();
+        public static Dictionary<string, ViewModelStore> modelRepo = new Dictionary<string, ViewModelStore>();
 
-        public static T GetModel<T>() where T : Model, new()
+        public static T GetStore<T>() where T : ViewModelStore, new()
         {
             lock (threadLock)
             {

@@ -119,7 +119,5 @@ namespace BitEd.ViewModels
         
         //Command Properties
         public ParamCommand ClickDirectory { get { return new ParamCommand(clickedDirectory, null); } }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -91,7 +91,7 @@
                 </Grid.RowDefinitions>
                 <!--Assets-->
                 <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Project" Margin="0,4,4,0">
-                    <Label Content="ProjectTree"/>
+                    <uControl:ProjectTree/>
                 </ContentControl>
                 <!--~Assets-->
                 <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" 
