@@ -117,7 +117,7 @@
             <!--~Edit-->
             <!--~Assets/propeditor-->
             <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Inspector" Margin="0,4,4,0" Grid.Column="4">
-                <Label Content="Inspector"/>
+                <uControl:Inspector/>
             </ContentControl>
         </Grid>
         <!--~ContentSection-->

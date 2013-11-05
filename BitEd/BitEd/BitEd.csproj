@@ -63,12 +63,19 @@
     <Compile Include="DirectoryBrowser.xaml.cs">
       <DependentUpon>DirectoryBrowser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Inspector.xaml.cs">
+      <DependentUpon>Inspector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Action\ActionProperty.cs" />
+    <Compile Include="Models\Action\BaseAction.cs" />
+    <Compile Include="Models\Action\RenderSprite.cs" />
     <Compile Include="Models\DirectoryEntry.cs" />
     <Compile Include="Models\Entity\EntityFolder.cs" />
     <Compile Include="Models\Entity\EntityNode.cs" />
     <Compile Include="Models\Entity\EntityObject.cs" />
     <Compile Include="Models\Entity\EntityRoot.cs" />
     <Compile Include="Models\Entity\EntitySprite.cs" />
+    <Compile Include="Models\Event\BaseEvent.cs" />
     <Compile Include="Models\ViewModelStore.cs" />
     <Compile Include="Models\StoreService.cs" />
     <Compile Include="Models\ViewModelStores\ProjectStore.cs" />
@@ -82,6 +89,10 @@
     <Compile Include="ViewModels\ToolboxViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Page Include="DirectoryBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inspector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,6 +165,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\dirFolder16B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\entityObject16.png" />
+    <Resource Include="Resources\entityObject48.png" />
+    <Resource Include="Resources\entityPackage16.png" />
+    <Resource Include="Resources\entityPackage48.png" />
+    <Resource Include="Resources\entityScreen16.png" />
+    <Resource Include="Resources\entityScreen48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pin8B.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

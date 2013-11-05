@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="BitEd.Inspector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="220">
+    <Grid Background="#404040">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--Generic Item Change-->
+        <Border BorderThickness="0,0,0,2" BorderBrush="#323232">
+            <Border BorderThickness="0,0,0,2" BorderBrush="#4e4e4e">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="12px"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Resources/entityScreen48.png" Width="48" Height="48"></Image>
+                    <StackPanel Grid.Column="1">
+                        <TextBox Margin="2"/>
+                        <TextBox Margin="2"/>
+                    </StackPanel>
+                    <ToggleButton Content="lol" Grid.Column="2" Width="10" Height="10">
+                        <ToggleButton.Template>
+                            <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                <Image Name="PinImage" Source="Resources/pin8B.png" Width="8" Height="8" IsEnabled="False"/>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter Property="ToggleButton.LayoutTransform">
+                                            <Setter.Value>
+                                                <RotateTransform Angle="270"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                    </ToggleButton>
+                </Grid>
+            </Border>
+        </Border>
+        <!--~Generic Item Change-->
+    </Grid>
+</UserControl>
