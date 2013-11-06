@@ -8,5 +8,9 @@ namespace BitEd.Models.Action
 {
     class RenderSprite:BaseAction
     {
+        public RenderSprite()
+        {
+            base.name = "Render Sprite";
+        }
     }
 }
