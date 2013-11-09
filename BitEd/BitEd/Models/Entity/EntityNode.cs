@@ -15,7 +15,8 @@ namespace BitEd.Models.Entity
         Folder,
         Root,
         Sprite,
-        Object
+        Object,
+        Dummy,
     }
     public abstract class EntityNode
     {

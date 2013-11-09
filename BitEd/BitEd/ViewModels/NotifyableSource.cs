@@ -18,7 +18,18 @@ namespace BitEd.ViewModels
             }
             else
             {
-                Debug.WriteLine("ERROR: PropertyChanged was null in __NotifyProperty__ ");
+                Debug.WriteLine("ERROR: PropertyChanged " + prop + " was null in __NotifyProperty__ ");
+            }
+        }
+        protected void NotifyProperty(string prop, string debugableInfo)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+            else
+            {
+                Debug.WriteLine("ERROR: PropertyChanged "+prop+" was null in __NotifyProperty__  in "+debugableInfo);
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

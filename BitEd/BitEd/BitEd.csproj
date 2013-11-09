@@ -58,8 +58,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\ActionCommand.cs" />
     <Compile Include="Core\BindingProxy.cs" />
+    <Compile Include="Core\FreezableBinding.cs" />
     <Compile Include="Core\ParamCommand.cs" />
+    <Compile Include="Core\PushBinding.cs" />
+    <Compile Include="Core\PushBindingCollection.cs" />
+    <Compile Include="Core\PushBindingManager.cs" />
     <Compile Include="DirectoryBrowser.xaml.cs">
       <DependentUpon>DirectoryBrowser.xaml</DependentUpon>
     </Compile>
@@ -70,6 +75,7 @@
     <Compile Include="Models\Action\BaseAction.cs" />
     <Compile Include="Models\Action\RenderSprite.cs" />
     <Compile Include="Models\DirectoryEntry.cs" />
+    <Compile Include="Models\Entity\EntityDummy.cs" />
     <Compile Include="Models\Entity\EntityFolder.cs" />
     <Compile Include="Models\Entity\EntityNode.cs" />
     <Compile Include="Models\Entity\EntityObject.cs" />
@@ -83,6 +89,7 @@
       <DependentUpon>ProjectTree.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DirectoryViewModel.cs" />
+    <Compile Include="ViewModels\InspectorViewModel.cs" />
     <Compile Include="ViewModels\NotifyableSource.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\ScreenViewModel.cs" />

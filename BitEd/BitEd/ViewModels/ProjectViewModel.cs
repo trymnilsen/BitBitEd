@@ -25,6 +25,14 @@ namespace BitEd.ViewModels
                 model.RootNode = value;
             }
         }
+        public EntityNode SelectedProjectItem
+        {
+            get { return model.SelectedNode; }
+            set { 
+                model.SelectedNode = value; 
+                NotifyProperty("SelectedProjectItem"); 
+            }
+        }
         public ObservableCollection<EntityNode> ProjectAssets { get; set; }
         public ProjectViewModel()
         {
@@ -32,5 +40,6 @@ namespace BitEd.ViewModels
             ProjectAssets = new ObservableCollection<EntityNode>();
             ProjectAssets.Add(RootNode);
         }
+
     }
 }

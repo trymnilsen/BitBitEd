@@ -1,6 +1,7 @@
 ﻿using BitEd.Models.Entity;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace BitEd.Models.ViewModelStores
     {
         //Private values
         private EntityRoot rootNode;
+        private EntityNode selectedNode;
 
         //Properties
         public EntityRoot RootNode
@@ -24,10 +26,26 @@ namespace BitEd.Models.ViewModelStores
                 if(rootNode!=value)
                 {
                     rootNode = value;
-                    NotifyProperty("RootNode");
                 }
             }
         }
+        public EntityNode SelectedNode
+        {
+            get
+            {
+                return selectedNode;
+            }
+            set
+            {
+                if(SelectedNode!=value)
+                {
+                    Debug.WriteLine("Lol");
+                    selectedNode = value;
+                    NotifyProperty("SelectedNode");
+                }
+            }
+        }
+        
         
         public ProjectStore()
         {
