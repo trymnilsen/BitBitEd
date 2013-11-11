@@ -57,7 +57,6 @@ namespace BitEd.ViewModels
         void SetEntityName()
         {
             projectStoreModel.SelectedNode.Name = TextBoxEntityName;
-            projectStoreModel
             NotifyProperty("TextBoxEntityName");
         }
         bool CanSetEntityName()
