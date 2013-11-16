@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.ObjectModel;
-using BitEd.Models;
 using System.Diagnostics;
 using BitEd.Core;
 using System.ComponentModel;
+using GalaSoft.MvvmLight;
+using BitEd.Models.Directory;
 
 namespace BitEd.ViewModels
-{   
-
-    class DirectoryViewModel:ViewModel
+{
+    public class DirectoryViewModel:ViewModelBase
     {
         private string currentDirectory;
         public string DirectoryPath
@@ -35,8 +35,8 @@ namespace BitEd.ViewModels
                 {
                     Debug.WriteLine("Setting currentDirectory: "+currentDirectory+" to "+value);
                     currentDirectory = value;
-                    NotifyProperty("DirectoryPath");
-                    NotifyProperty("DirectoryListing");
+                    RaisePropertyChanged("DirectoryPath");
+                    RaisePropertyChanged("DirectoryListing");
                 }
             }
 

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BitEd
+namespace BitEd.View
 {
     /// <summary>
-    /// Interaction logic for ProjectTree.xaml
+    /// Interaction logic for Inspector.xaml
     /// </summary>
-    public partial class ProjectTree : UserControl
+    public partial class Inspector : UserControl
     {
-        public ProjectTree()
+        public Inspector()
         {
             InitializeComponent();
         }

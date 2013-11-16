@@ -1,7 +1,7 @@
 ﻿<Window x:Class="BitEd.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:uControl="clr-namespace:BitEd"
+        xmlns:view="clr-namespace:BitEd.View"
         Title="MainWindow" Height="500" Width="800" Background="#131313"
         Icon="icon.ico">
     <Grid>
@@ -91,7 +91,7 @@
                 </Grid.RowDefinitions>
                 <!--Assets-->
                 <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Project" Margin="0,4,4,0">
-                    <uControl:ProjectTree/>
+                    <view:ProjectTree/>
                 </ContentControl>
                 <!--~Assets-->
                 <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" 
@@ -102,7 +102,7 @@
                 <Grid Grid.Row="2" Margin="0,4,4,0">
                         <TabControl Style="{StaticResource ResourceKey=TabControlBaseDarkStyle}">
                             <TabItem Header="Directory" Style="{StaticResource ResourceKey=TabItemDarkStyle}">
-                                <uControl:DirectoryBrowser/>
+                                <view:DirectoryBrowser/>
                             </TabItem>
                             <TabItem Header="Actions" Style="{StaticResource ResourceKey=TabItemDarkStyle}"></TabItem>
                     
@@ -117,7 +117,7 @@
             <!--~Edit-->
             <!--~Assets/propeditor-->
             <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Inspector" Margin="0,4,4,0" Grid.Column="4">
-                <uControl:Inspector/>
+                <view:Inspector/>
             </ContentControl>
         </Grid>
         <!--~ContentSection-->

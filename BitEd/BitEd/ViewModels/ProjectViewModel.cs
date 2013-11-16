@@ -1,6 +1,6 @@
 ﻿using BitEd.Models;
 using BitEd.Models.Entity;
-using BitEd.Models.ViewModelStores;
+using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,34 +10,37 @@ using System.Threading.Tasks;
 
 namespace BitEd.ViewModels
 {
-    class ProjectViewModel:ViewModel
+    public class ProjectViewModel:ViewModelBase
     {
-        ProjectStore model;
+        //Private storage variables
+        EntityRoot rootNode;
+        EntityNode selectedNode;
 
+        //Bindable Properties
         public EntityRoot RootNode
         {
             get
             {
-                return model.RootNode;
+                return rootNode;
             }
             set
             {
-                model.RootNode = value;
+                rootNode = value;
             }
         }
-        public EntityNode SelectedProjectItem
+        public EntityNode SelectedItem
         {
-            get { return model.SelectedNode; }
+            get { return selectedNode; }
             set { 
-                model.SelectedNode = value; 
-                NotifyProperty("SelectedProjectItem"); 
+                selectedNode = value; 
+                RaisePropertyChanged("SelectedtsItem"); 
             }
         }
         public ObservableCollection<EntityNode> ProjectAssets { get; set; }
         public ProjectViewModel()
         {
-            model = StoreService.GetStore<ProjectStore>();
             ProjectAssets = new ObservableCollection<EntityNode>();
+            RootNode = new EntityRoot();
             ProjectAssets.Add(RootNode);
         }
 

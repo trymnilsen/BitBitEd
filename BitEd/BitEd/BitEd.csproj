@@ -80,16 +80,16 @@
     <Compile Include="Core\PushBinding.cs" />
     <Compile Include="Core\PushBindingCollection.cs" />
     <Compile Include="Core\PushBindingManager.cs" />
-    <Compile Include="DirectoryBrowser.xaml.cs">
+    <Compile Include="View\DirectoryBrowser.xaml.cs">
       <DependentUpon>DirectoryBrowser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Inspector.xaml.cs">
+    <Compile Include="View\Inspector.xaml.cs">
       <DependentUpon>Inspector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Action\ActionProperty.cs" />
     <Compile Include="Models\Action\BaseAction.cs" />
     <Compile Include="Models\Action\RenderSprite.cs" />
-    <Compile Include="Models\DirectoryEntry.cs" />
+    <Compile Include="Models\Directory\DirectoryEntry.cs" />
     <Compile Include="Models\Entity\EntityDummy.cs" />
     <Compile Include="Models\Entity\EntityFolder.cs" />
     <Compile Include="Models\Entity\EntityNode.cs" />
@@ -97,28 +97,24 @@
     <Compile Include="Models\Entity\EntityRoot.cs" />
     <Compile Include="Models\Entity\EntitySprite.cs" />
     <Compile Include="Models\Event\BaseEvent.cs" />
-    <Compile Include="Models\ViewModelStore.cs" />
-    <Compile Include="Models\StoreService.cs" />
-    <Compile Include="Models\ViewModelStores\ProjectStore.cs" />
-    <Compile Include="ProjectTree.xaml.cs">
+    <Compile Include="View\ProjectTree.xaml.cs">
       <DependentUpon>ProjectTree.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DirectoryViewModel.cs" />
     <Compile Include="ViewModels\InspectorViewModel.cs" />
-    <Compile Include="ViewModels\NotifyableSource.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\ScreenViewModel.cs" />
     <Compile Include="ViewModels\ToolboxViewModel.cs" />
-    <Compile Include="ViewModels\ViewModel.cs" />
-    <Page Include="DirectoryBrowser.xaml">
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Page Include="View\DirectoryBrowser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Inspector.xaml">
+    <Page Include="View\Inspector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProjectTree.xaml">
+    <Page Include="View\ProjectTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converter\" />
+    <Folder Include="Messages\" />
     <Folder Include="Models\Inspector\" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\pin8B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dirFolder16Orange.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BitEd.Models
+namespace BitEd.Models.Directory
 {
-    class DirectoryEntry
+    public class DirectoryEntry
     {
         public string Name {get; set;}
         public bool IsFolder { get; set; }

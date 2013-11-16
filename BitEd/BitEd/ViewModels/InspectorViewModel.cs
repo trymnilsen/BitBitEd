@@ -1,7 +1,7 @@
 ﻿using BitEd.Core;
 using BitEd.Models;
 using BitEd.Models.Entity;
-using BitEd.Models.ViewModelStores;
+using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +13,8 @@ using System.Windows.Input;
 
 namespace BitEd.ViewModels
 {
-    class InspectorViewModel:ViewModel
+    public class InspectorViewModel:ViewModelBase
     {
-        private ProjectStore projectStoreModel;
         private EntityDummy noSelectedNode;
         private string entityTexboxName = "No Entity Selected";
 
@@ -31,7 +30,7 @@ namespace BitEd.ViewModels
                 {
                     Debug.WriteLine("Setting EntityName to: " + value);
                     entityTexboxName = value;
-                    NotifyProperty("TextBoxEntityName");
+                    RaisePropertyChanged("TextBoxEntityName");
                 }
             }
         }
@@ -40,35 +39,26 @@ namespace BitEd.ViewModels
         public InspectorViewModel()
         {
             noSelectedNode = new EntityDummy();
-            projectStoreModel = StoreService.GetStore<ProjectStore>();
-            projectStoreModel.PropertyChanged += projectStoreModel_PropertyChanged;
         }
 
-        void projectStoreModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            Debug.WriteLine("Changed");
-            //Trigger set
-            if (projectStoreModel.SelectedNode != null)
-            {
-                TextBoxEntityName = projectStoreModel.SelectedNode.Name;
-            }
-        }
+
         //Commands
         void SetEntityName()
         {
-            projectStoreModel.SelectedNode.Name = TextBoxEntityName;
-            NotifyProperty("TextBoxEntityName");
+            //projectStoreModel.SelectedNode.Name = TextBoxEntityName;
+            RaisePropertyChanged("TextBoxEntityName");
         }
         bool CanSetEntityName()
         {
-            if(projectStoreModel.SelectedNode!=null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return false;
+            //if(projectStoreModel.SelectedNode!=null)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
         }
         //Command Properties
         public ICommand SetEntityNameOnEnter { get { return new ActionCommand(SetEntityName, CanSetEntityName); } }

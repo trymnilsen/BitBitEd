@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace BitEd.Core
 {
-    class ParamCommand: ICommand
+    public class ParamCommand: ICommand
     {
         private Func<bool> condition;
         private Action<object> ParamExecutable;
