@@ -1,9 +1,12 @@
-﻿using BitEd.Models;
+﻿using BitEd.Messages.Project;
+using BitEd.Models;
 using BitEd.Models.Entity;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +36,9 @@ namespace BitEd.ViewModels
             get { return selectedNode; }
             set { 
                 selectedNode = value; 
-                RaisePropertyChanged("SelectedtsItem"); 
+                RaisePropertyChanged("SelectedItem");
+                Debug.WriteLine("Changing Selected Item");
+                SelectedItemChangeMessage.Send(value);
             }
         }
         public ObservableCollection<EntityNode> ProjectAssets { get; set; }
@@ -42,6 +47,7 @@ namespace BitEd.ViewModels
             ProjectAssets = new ObservableCollection<EntityNode>();
             RootNode = new EntityRoot();
             ProjectAssets.Add(RootNode);
+            RootNode.Childs.Add(new EntityFolder("TestFolder", RootNode));
         }
 
     }

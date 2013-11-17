@@ -80,6 +80,8 @@
     <Compile Include="Core\PushBinding.cs" />
     <Compile Include="Core\PushBindingCollection.cs" />
     <Compile Include="Core\PushBindingManager.cs" />
+    <Compile Include="Messages\Project\SelectedItemChangeMessage.cs" />
+    <Compile Include="Models\Entity\EntityPresenter.cs" />
     <Compile Include="View\DirectoryBrowser.xaml.cs">
       <DependentUpon>DirectoryBrowser.xaml</DependentUpon>
     </Compile>
@@ -173,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converter\" />
-    <Folder Include="Messages\" />
     <Folder Include="Models\Inspector\" />
   </ItemGroup>
   <ItemGroup>
