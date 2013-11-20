@@ -50,6 +50,10 @@ namespace BitEd.ViewModels
                     entityTexboxName = value;
                     RaisePropertyChanged("TextBoxEntityName");
                 }
+                else
+                {
+                    Debug.WriteLine("TextBoxEntityName was the same("+value+") no change");
+                }
             }
         }
 

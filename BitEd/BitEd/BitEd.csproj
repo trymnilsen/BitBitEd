@@ -81,7 +81,10 @@
     <Compile Include="Core\PushBindingCollection.cs" />
     <Compile Include="Core\PushBindingManager.cs" />
     <Compile Include="Messages\Project\SelectedItemChangeMessage.cs" />
-    <Compile Include="Models\Entity\EntityPresenter.cs" />
+    <Compile Include="Models\Action\ActionCollection.cs" />
+    <Compile Include="Models\Entity\Component.cs" />
+    <Compile Include="Models\Entity\Property.cs" />
+    <Compile Include="Selectors\PropertyTemplateSelector.cs" />
     <Compile Include="View\DirectoryBrowser.xaml.cs">
       <DependentUpon>DirectoryBrowser.xaml</DependentUpon>
     </Compile>

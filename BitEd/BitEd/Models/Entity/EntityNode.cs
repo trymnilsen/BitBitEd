@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +20,31 @@ namespace BitEd.Models.Entity
         Object,
         Dummy,
     }
-    public abstract class EntityNode
+    public abstract class EntityNode:INotifyPropertyChanged
     {
+        [NonSerialized]
+        private String name;
 
         private EntityNode parent;
 
         public EntityType Type { get; set; }
         public ObservableCollection<EntityNode> Childs { get; set; }
-        public String Name { get; set; }
+        public String Name {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Name"));
+                    Debug.WriteLine("Changing to: " + value);
+                }
+            } 
+        }
+        
         public String ToolTip { get; set; }
         public EntityNode Parent
         {
@@ -47,6 +66,8 @@ namespace BitEd.Models.Entity
         {
             return new EntityRoot();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
    
 }

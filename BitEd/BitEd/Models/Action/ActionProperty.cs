@@ -16,7 +16,8 @@ namespace BitEd.Models.Action
         Number,
         Enum
     }
-    class ActionProperty
+    public class ActionProperty
     {
+        public PropertyType PropertyType { get; set; }
     }
 }

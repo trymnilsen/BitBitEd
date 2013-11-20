@@ -15,19 +15,14 @@ namespace BitEd.Models.Action
         Rendering,
         Post//After both rendering and all other execution
     }
-    public enum ActuionCategory
+    public enum ActionCategory
     {
         Transform,
         Rendering
     }
 
-    class BaseAction
+    public class BaseAction
     {
-        
-        //List of available Actions
-        static ReadOnlyCollection<BaseAction> AvailableActions = new ReadOnlyCollection<BaseAction>(new BaseAction[]{
-            new RenderSprite(),
-        });
 
         protected string name;
 
