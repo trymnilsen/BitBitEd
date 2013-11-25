@@ -103,7 +103,7 @@ namespace BitEd.ViewModels
             if (pressedEntry.IsFolder)
             {
                 //Explicit handling of the back ".." entry
-                if (pressedEntry.Path.Equals(".."))
+                if (pressedEntry.Path.Equals("..") && DirectoryPath!="C:\\")
                 {
                     DirectoryPath = new DirectoryInfo(currentDirectory).Parent.FullName;
                 }

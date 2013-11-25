@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -56,6 +57,7 @@ namespace BitEd.ViewModels
                 }
             }
         }
+
 
 
         public InspectorViewModel()

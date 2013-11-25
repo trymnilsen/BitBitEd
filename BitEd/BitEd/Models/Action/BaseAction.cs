@@ -29,6 +29,7 @@ namespace BitEd.Models.Action
         public ExecutionPriority ExecutionOrder { get; set; }
         public ObservableCollection<ActionProperty> ActionProperties { get; set; }
         public bool isExclusive { get; set; }
+        public string Name { get; set; }
         public BaseAction()
             : this(ExecutionPriority.Normal) { }
 

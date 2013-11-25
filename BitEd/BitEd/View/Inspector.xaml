@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:BitEd.ViewModels"
+             xmlns:entity="clr-namespace:BitEd.Models.Entity"
+             xmlns:selector="clr-namespace:BitEd.Selectors"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="220"
              DataContext="{Binding InspectorVM, Source={StaticResource Locator}}">
@@ -33,7 +35,7 @@
                     <ToggleButton Content="lol" Grid.Column="2" Width="10" Height="10">
                         <ToggleButton.Template>
                             <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                <Image Name="PinImage" Source="Resources/pin8B.png" Width="8" Height="8" IsEnabled="False"/>
+                                <Image Name="PinImage" Source="../Resources/pin8B.png" Width="8" Height="8" IsEnabled="False"/>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsChecked" Value="True">
                                         <Setter Property="ToggleButton.LayoutTransform">
@@ -50,5 +52,28 @@
             </Border>
         </Border>
         <!--~Generic Item Change-->
+        <!-- Properties part -->
+        
+        <ContentControl Grid.Row="1" Content="{Binding ActiveNode}">
+            <ContentControl.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="ContentTemplates/EntityObjectTemplate.xaml"/>
+                        <ResourceDictionary Source="ContentTemplates/EntityDummyTemplate.xaml"/>
+                     </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ContentControl.Resources>
+            <ContentControl.ContentTemplateSelector>
+                <selector:EntityInspectorTemplateSelector>
+                    <selector:EntityInspectorTemplateSelector.Templates>
+                        <selector:EntityTemplateCollection>
+                            <selector:EntityTemplate Value="{x:Type entity:EntityObject}" Template="{StaticResource ResourceKey=InspectorEntityObject}"/>
+                            <selector:EntityTemplate Value="{x:Type entity:EntityDummy}" Template="{StaticResource ResourceKey=InspectorEntityDummy}"/>
+                        </selector:EntityTemplateCollection>
+                    </selector:EntityInspectorTemplateSelector.Templates>
+                </selector:EntityInspectorTemplateSelector>
+            </ContentControl.ContentTemplateSelector>
+        </ContentControl>
+
     </Grid>
 </UserControl>

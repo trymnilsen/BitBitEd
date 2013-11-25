@@ -49,6 +49,7 @@ namespace BitEd.ViewModels
             ProjectAssets.Add(RootNode);
             RootNode.Childs.Add(new EntityFolder("TestFolder", RootNode));
             RootNode.Childs.Add(new EntityFolder("TestFolder", RootNode));
+            RootNode.Childs.Add(new EntityObject(rootNode, "TestObject"));
         }
 
     }

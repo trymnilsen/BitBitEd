@@ -11,7 +11,6 @@
              DataContext="{Binding ProjectVM, Source={StaticResource Locator}}">
     <Grid>
         <TreeView ItemsSource="{Binding ProjectAssets}" Background="Transparent" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Auto">
-
             <core:PushBindingManager.PushBindings>
                 <core:PushBinding TargetProperty="SelectedItem" Path="SelectedItem"/>
             </core:PushBindingManager.PushBindings>

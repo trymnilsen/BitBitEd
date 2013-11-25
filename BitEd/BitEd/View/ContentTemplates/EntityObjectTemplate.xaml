@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:entityModels="clr-namespace:BitEd.Models.Entity"
+                    xmlns:selector="clr-namespace:BitEd.Selectors"
+                    xmlns:action="clr-namespace:BitEd.Models.Action"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <DataTemplate x:Key="InspectorEntityObject">
+        <StackPanel>
+            <TextBlock Text="Object or folder, for now"/>
+            <TextBlock Text="{Binding Name}"/>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

@@ -6,18 +6,9 @@ using System.Threading.Tasks;
 
 namespace BitEd.Models.Action
 {
-    public enum PropertyType
-    {
-        Boolean,
-        Asset,
-        String,
-        Int,
-        Float,
-        Number,
-        Enum
-    }
     public class ActionProperty
     {
-        public PropertyType PropertyType { get; set; }
+        public string Name { get; set; }
+        public object value { get; set; }
     }
 }

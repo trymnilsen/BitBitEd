@@ -9,26 +9,15 @@ using System.Windows.Controls;
 
 namespace BitEd.Selectors
 {
-    class PropertyTemplateSelector : DataTemplateSelector
+    public class PropertyTemplateSelector : DataTemplateSelector
     {
         //As a static resource is assigned there is no need for a dependency property
-        public DataTemplate IntegerTemplate { get; set; }
-        public DataTemplate BooleanTemplate { get; set; }
+        public Grid IntegerTemplate { get; set; }
+        public TextBlock BooleanTemplate { get; set; }
 
         public override System.Windows.DataTemplate SelectTemplate(object item, System.Windows.DependencyObject container)
         {
-            ActionProperty propertyObject = item as ActionProperty;
-            switch (propertyObject.PropertyType)
-            {
-                case PropertyType.Int:
-                    return IntegerTemplate;
-
-                case PropertyType.Boolean:
-                    return BooleanTemplate;
-
-                default:
-                    return base.SelectTemplate(item, container);
-            }
+             return base.SelectTemplate(item, container);
         }
     }
 }
