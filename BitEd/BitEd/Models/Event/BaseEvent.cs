@@ -10,12 +10,15 @@ namespace BitEd.Models.Event
 {
     class BaseEvent
     {
-        protected string name;
-
         public ObservableCollection<BaseAction> Actions { get; set; }
+        public string Name { get; set; }
         public BaseEvent()
         {
             Actions = new ObservableCollection<BaseAction>();
+        }
+        public override string ToString()
+        {
+            return Name == null ? "No Name given" : Name;
         }
         
     }

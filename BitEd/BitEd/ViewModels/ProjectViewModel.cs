@@ -1,6 +1,7 @@
 ﻿using BitEd.Messages.Project;
 using BitEd.Models;
 using BitEd.Models.Entity;
+using BitEd.Models.Event;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using System;
@@ -49,7 +50,9 @@ namespace BitEd.ViewModels
             ProjectAssets.Add(RootNode);
             RootNode.Childs.Add(new EntityFolder("TestFolder", RootNode));
             RootNode.Childs.Add(new EntityFolder("TestFolder", RootNode));
-            RootNode.Childs.Add(new EntityObject(rootNode, "TestObject"));
+            EntityObject testObj = new EntityObject(rootNode, "Sprite1");
+            testObj.Events.Add(new BaseEvent() { Name = "lol" });
+            RootNode.Childs.Add(testObj);
         }
 
     }

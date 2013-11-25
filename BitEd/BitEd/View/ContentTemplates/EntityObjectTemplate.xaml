@@ -4,10 +4,10 @@
                     xmlns:selector="clr-namespace:BitEd.Selectors"
                     xmlns:action="clr-namespace:BitEd.Models.Action"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <DataTemplate x:Key="InspectorEntityObject">
+    <DataTemplate x:Key="InspectorEntityObject" DataType="{x:Type entityModels:EntityObject}">
         <StackPanel>
-            <TextBlock Text="Object or folder, for now"/>
-            <TextBlock Text="{Binding Name}"/>
+            <ItemsControl ItemsSource="{Binding Events}">
+            </ItemsControl>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

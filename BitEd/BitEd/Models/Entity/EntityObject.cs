@@ -10,14 +10,14 @@ namespace BitEd.Models.Entity
 {
     class EntityObject:EntityNode
     {
-        private EntitySprite sprite;
-        private bool isVisible;
-        private bool isPersistent;
-        private ObservableCollection<BaseEvent> events; 
+        public EntitySprite sprite;
+        public bool isVisible;
+        public bool isPersistent;
+        public ObservableCollection<BaseEvent> Events {get; set;} 
         public EntityObject(EntityNode parent, string name)
             :base(parent, EntityType.Object,name)
         {
-            events = new ObservableCollection<BaseEvent>();
+            Events = new ObservableCollection<BaseEvent>();
         }
 
     }
