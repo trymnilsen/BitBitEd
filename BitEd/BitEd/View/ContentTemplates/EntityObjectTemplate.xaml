@@ -3,11 +3,23 @@
                     xmlns:entityModels="clr-namespace:BitEd.Models.Entity"
                     xmlns:selector="clr-namespace:BitEd.Selectors"
                     xmlns:action="clr-namespace:BitEd.Models.Action"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:event="clr-namespace:BitEd.Models.Event">
     <DataTemplate x:Key="InspectorEntityObject" DataType="{x:Type entityModels:EntityObject}">
         <StackPanel>
+            <!--Events-->
             <ItemsControl ItemsSource="{Binding Events}">
+                <ItemsControl.ItemTemplate>
+                    <!--EventsTemplate-->
+                    <DataTemplate DataType="{x:Type event:BaseEvent}">
+                        <Expander Header="{Binding Name}" Background="#4c4c4c" Template="{StaticResource SimpleExpanderTemp}">
+                            <!-- Actions-->
+                            
+                        </Expander>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
             </ItemsControl>
+            <Button Content="Add Event" Template="{StaticResource TextButtonTemplate}"></Button>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

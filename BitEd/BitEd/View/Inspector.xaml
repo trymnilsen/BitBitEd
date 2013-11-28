@@ -54,7 +54,7 @@
         <!--~Generic Item Change-->
         <!-- Properties part -->
         
-        <ContentControl Grid.Row="1" Content="{Binding ActiveNode}">
+        <ContentControl Grid.Row="1" Content="{Binding ActiveNode}" Margin="0,5,0,0">
             <ContentControl.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>

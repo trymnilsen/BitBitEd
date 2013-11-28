@@ -10,6 +10,8 @@
                 <ResourceDictionary Source="Style/EditorControlContainerStyle.xaml"/>
                 <ResourceDictionary Source="Style/TabControlStyle.xaml"/>
                 <ResourceDictionary Source="Style/ScrollbarStyle.xaml"/>
+                <ResourceDictionary Source="Style/TextButtonTemplate.xaml"/>
+                <ResourceDictionary Source="Style/ExpanderTemplates.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

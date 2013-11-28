@@ -127,6 +127,14 @@
     <Compile Include="ViewModels\ScreenViewModel.cs" />
     <Compile Include="ViewModels\ToolboxViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Page Include="Style\ExpanderTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\TextButtonTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ContentTemplates\EntityDummyTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converter\" />
+    <Folder Include="Messages\Inspector\" />
     <Folder Include="Models\Inspector\" />
   </ItemGroup>
   <ItemGroup>
