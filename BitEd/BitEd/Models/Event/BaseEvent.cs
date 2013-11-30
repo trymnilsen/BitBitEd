@@ -11,6 +11,8 @@ namespace BitEd.Models.Event
     class BaseEvent
     {
         public ObservableCollection<BaseAction> Actions { get; set; }
+        public string Id { get; set; }
+        public object Argument { get; set; }
         public string Name { get; set; }
         public BaseEvent()
         {

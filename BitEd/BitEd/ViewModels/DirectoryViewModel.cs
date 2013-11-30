@@ -74,11 +74,11 @@ namespace BitEd.ViewModels
                 if (dir.Attributes.HasFlag(FileAttributes.Directory) && !dir.Attributes.HasFlag(FileAttributes.Hidden))
                 {
                     tmpCollection.Add(new DirectoryEntry(dir.Name,dir.FullName, true));
-                    Debug.WriteLine("Adding Directory : " + dir + " with atributes: "+dir.Attributes);
+                    //Debug.WriteLine("Adding Directory : " + dir + " with atributes: "+dir.Attributes);
                 }
                 else
                 {
-                    Debug.WriteLine(dir.FullName + " Rejected because its type : " + dir.Attributes + " Was not valid");
+                    //Debug.WriteLine(dir.FullName + " Rejected because its type : " + dir.Attributes + " Was not valid");
                 }
             }
 
@@ -90,7 +90,7 @@ namespace BitEd.ViewModels
                     tmpCollection.Add(new DirectoryEntry(file.Name, file.FullName, false));
                    
                 }
-                Debug.WriteLine("File : " + file.Name+" has atributes: "+file.Attributes);
+                //Debug.WriteLine("File : " + file.Name+" has atributes: "+file.Attributes);
             }
             return tmpCollection;
         }

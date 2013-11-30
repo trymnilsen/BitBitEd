@@ -3,11 +3,10 @@
     <ControlTemplate x:Key="SimpleExpanderButtonTemp" 
              TargetType="{x:Type ToggleButton}">
         <Border x:Name="ExpanderButtonBorder"
-            Background="#4c4c4c"
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
             Padding="{TemplateBinding Padding}">
-            <Grid>
+            <Grid Background="{TemplateBinding Background}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -33,7 +32,8 @@
                 <ContentPresenter x:Name="HeaderContent"
                           Grid.Column="1"
                           Margin="4,0,0,0"
-                          ContentSource="Content"/>
+                          ContentSource="Content">
+                </ContentPresenter>
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -55,11 +55,12 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="SimpleExpanderTemp" TargetType="{x:Type Expander}">
-        <DockPanel>
+        <DockPanel Margin="{TemplateBinding Margin}">
             <ToggleButton x:Name="ExpanderButton"
                       DockPanel.Dock="Top"
                       Template="{StaticResource SimpleExpanderButtonTemp}"
                       Content="{TemplateBinding Header}"
+                      Background="{TemplateBinding Background}"
                       IsChecked="{Binding Path=IsExpanded, 
                       RelativeSource={RelativeSource TemplatedParent}}"
                       OverridesDefaultStyle="True"

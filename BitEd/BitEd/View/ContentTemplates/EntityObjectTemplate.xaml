@@ -2,24 +2,58 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:entityModels="clr-namespace:BitEd.Models.Entity"
                     xmlns:selector="clr-namespace:BitEd.Selectors"
+                    xmlns:actions="clr-namespace:BitEd.Models.Action.Actions"
                     xmlns:action="clr-namespace:BitEd.Models.Action"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:event="clr-namespace:BitEd.Models.Event">
     <DataTemplate x:Key="InspectorEntityObject" DataType="{x:Type entityModels:EntityObject}">
         <StackPanel>
+            <TextBlock Text=" :: Object Events" Margin="2">
+                <TextBlock.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add Event.."/>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
+            </TextBlock>
             <!--Events-->
             <ItemsControl ItemsSource="{Binding Events}">
                 <ItemsControl.ItemTemplate>
                     <!--EventsTemplate-->
                     <DataTemplate DataType="{x:Type event:BaseEvent}">
-                        <Expander Header="{Binding Name}" Background="#4c4c4c" Template="{StaticResource SimpleExpanderTemp}">
+                        <Expander Background="#313131" Template="{StaticResource SimpleExpanderTemp}">
+                            <Expander.Header>
+                                <TextBlock Text="{Binding Name}">
+                                    <TextBlock.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Remove Event"/>
+                                            <MenuItem Header="Add Event.." tag/>
+                                            <MenuItem Header="New Action.." ItemsSource="{x:Static action:ActionCollection.AvailableActions}">
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </TextBlock.ContextMenu>
+                                </TextBlock>
+                            </Expander.Header>
                             <!-- Actions-->
-                            
+                            <ItemsControl ItemsSource="{Binding Actions}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type action:BaseAction}">
+                                        <Expander Header="{Binding Name}" Background="#4c4c4c" Template="{StaticResource SimpleExpanderTemp}" Margin="10,0,0,0">
+                                            <!--Action Properties-->
+                                            <ItemsControl ItemsSource="{Binding ActionProperties}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate DataType="{x:Type action:ActionProperty}">
+                                                        <TextBlock Text="{Binding Name}"/>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Expander>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </Expander>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <Button Content="Add Event" Template="{StaticResource TextButtonTemplate}"></Button>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

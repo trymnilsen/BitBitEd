@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BitEd.Models.Action
+namespace BitEd.Models.Action.Actions
 {
     class RenderSprite:BaseAction
     {
         public RenderSprite()
         {
-            base.name = "Render Sprite";
+            base.Name = "Render Sprite";
         }
     }
 }

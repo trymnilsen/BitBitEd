@@ -38,5 +38,13 @@ namespace BitEd.Models.Action
             ActionProperties = new ObservableCollection<ActionProperty>();
             ExecutionOrder = priority;
         }
+        /// <summary>
+        /// Needd for correct display of Action name
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

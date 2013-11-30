@@ -109,7 +109,7 @@
     </Compile>
     <Compile Include="Models\Action\ActionProperty.cs" />
     <Compile Include="Models\Action\BaseAction.cs" />
-    <Compile Include="Models\Action\RenderSprite.cs" />
+    <Compile Include="Models\Action\Actions\RenderSprite.cs" />
     <Compile Include="Models\Directory\DirectoryEntry.cs" />
     <Compile Include="Models\Entity\EntityDummy.cs" />
     <Compile Include="Models\Entity\EntityFolder.cs" />

@@ -1,5 +1,7 @@
 ﻿using BitEd.Messages.Project;
 using BitEd.Models;
+using BitEd.Models.Action;
+using BitEd.Models.Action.Actions;
 using BitEd.Models.Entity;
 using BitEd.Models.Event;
 using GalaSoft.MvvmLight;
@@ -48,10 +50,12 @@ namespace BitEd.ViewModels
             ProjectAssets = new ObservableCollection<EntityNode>();
             RootNode = new EntityRoot();
             ProjectAssets.Add(RootNode);
-            RootNode.Childs.Add(new EntityFolder("TestFolder", RootNode));
-            RootNode.Childs.Add(new EntityFolder("TestFolder", RootNode));
-            EntityObject testObj = new EntityObject(rootNode, "Sprite1");
-            testObj.Events.Add(new BaseEvent() { Name = "lol" });
+            EntityObject testObj = new EntityObject(rootNode, "Object01");
+            BaseEvent testEvent = new BaseEvent();
+            testEvent.Name = "OnRender";
+            testEvent.Actions.Add(new RenderSprite());
+            testEvent.Actions.Add(new BaseAction(){Name = "Test"});
+            testObj.Events.Add(testEvent);
             RootNode.Childs.Add(testObj);
         }
 
