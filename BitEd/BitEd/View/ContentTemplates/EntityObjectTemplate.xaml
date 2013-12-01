@@ -26,8 +26,8 @@
                                     <TextBlock.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem Header="Remove Event"/>
-                                            <MenuItem Header="Add Event.." tag/>
-                                            <MenuItem Header="New Action.." ItemsSource="{x:Static action:ActionCollection.AvailableActions}">
+                                            <MenuItem Header="Add Event.."/>
+                                            <MenuItem Header="New Action.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableActions}">
                                             </MenuItem>
                                         </ContextMenu>
                                     </TextBlock.ContextMenu>

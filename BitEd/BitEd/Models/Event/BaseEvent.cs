@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BitEd.Models.Event
 {
-    class BaseEvent
+    public class BaseEvent
     {
         public ObservableCollection<BaseAction> Actions { get; set; }
         public string Id { get; set; }

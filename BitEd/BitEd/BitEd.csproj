@@ -88,6 +88,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Entity\EntityCollections.cs" />
     <Compile Include="Selectors\EntityInspectorTemplateSelector.cs" />
     <Compile Include="Core\ActionCommand.cs" />
     <Compile Include="Core\BindingProxy.cs" />
@@ -97,7 +98,6 @@
     <Compile Include="Core\PushBindingCollection.cs" />
     <Compile Include="Core\PushBindingManager.cs" />
     <Compile Include="Messages\Project\SelectedItemChangeMessage.cs" />
-    <Compile Include="Models\Action\ActionCollection.cs" />
     <Compile Include="Models\Entity\Component.cs" />
     <Compile Include="Models\Entity\Property.cs" />
     <Compile Include="Selectors\PropertyTemplateSelector.cs" />
