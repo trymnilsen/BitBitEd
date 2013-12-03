@@ -51,11 +51,6 @@ namespace BitEd.ViewModels
             RootNode = new EntityRoot();
             ProjectAssets.Add(RootNode);
             EntityObject testObj = new EntityObject(rootNode, "Object01");
-            BaseEvent testEvent = new BaseEvent();
-            testEvent.Name = "OnRender";
-            testEvent.Actions.Add(new RenderSprite());
-            testEvent.Actions.Add(new BaseAction(){Name = "Test"});
-            testObj.Events.Add(testEvent);
             RootNode.Childs.Add(testObj);
         }
 

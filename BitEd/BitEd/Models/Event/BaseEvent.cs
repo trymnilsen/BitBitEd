@@ -18,6 +18,14 @@ namespace BitEd.Models.Event
         {
             Actions = new ObservableCollection<BaseAction>();
         }
+        public BaseEvent GetActionlessClone()
+        {
+            BaseEvent clone = new BaseEvent();
+            clone.Name = this.Name;
+            clone.Id = this.Id;
+            clone.Argument = this.Argument;
+            return clone;
+        }
         public override string ToString()
         {
             return Name == null ? "No Name given" : Name;

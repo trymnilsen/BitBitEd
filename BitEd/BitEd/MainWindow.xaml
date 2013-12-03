@@ -124,7 +124,7 @@
         <!--StatusBar-->
         <StatusBar Grid.Row="3" Background="#404040" Margin="0,4,0,0">
             <StatusBarItem>
-                <TextBlock Text="Lol"/>
+                <view:StatusBar/>
             </StatusBarItem>
         </StatusBar>
         <!--~StatusBar-->

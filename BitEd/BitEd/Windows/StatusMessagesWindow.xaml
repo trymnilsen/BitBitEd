@@ -1,0 +1,38 @@
+﻿<Window x:Class="BitEd.Windows.StatusMessagesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StatusMessagesWindow" Height="300" Width="500"
+        DataContext="{Binding StatusBarVM,Source={StaticResource Locator}}"
+        Background="#404040">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="100"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition MinHeight="40"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding StatusMessageCollection}" Background="#404040" BorderThickness="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Time" 
+            DisplayMemberBinding="{Binding TimeStamp}"/>
+                    <GridViewColumn Header="Message"  
+            DisplayMemberBinding="{Binding MessageString}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" 
+                            HorizontalAlignment="Stretch" Background="#131313"/>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="4,4,0,0">
+                <CheckBox IsChecked="{Binding Collapse}" Margin="0,0,4,0"/>
+                <TextBlock Text="Collapse Similar Messages" />
+            </StackPanel>
+            <Button Grid.Column="1" DockPanel.Dock="Right" Content="Clear"/>
+        </Grid>
+    </Grid>
+</Window>

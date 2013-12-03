@@ -11,7 +11,14 @@
             <TextBlock Text=" :: Object Events" Margin="2">
                 <TextBlock.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Add Event.."/>
+                        <MenuItem Header="Add Event.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
+                            <MenuItem.ItemContainerStyle>
+                                <Style TargetType="{x:Type MenuItem}">
+                                    <Setter Property="Command" Value="{Binding InspectorVM.AddEventToObject, Source={StaticResource Locator}}" />
+                                    <Setter Property="CommandParameter" Value="{Binding}" />
+                                </Style>
+                            </MenuItem.ItemContainerStyle>
+                        </MenuItem>
                     </ContextMenu>
                 </TextBlock.ContextMenu>
             </TextBlock>
@@ -26,7 +33,14 @@
                                     <TextBlock.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem Header="Remove Event"/>
-                                            <MenuItem Header="Add Event.."/>
+                                            <MenuItem Header="Add Event.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
+                                                <MenuItem.ItemContainerStyle>
+                                                    <Style TargetType="{x:Type MenuItem}">
+                                                        <Setter Property="Command" Value="{Binding InspectorVM.AddEventToObject, Source={StaticResource Locator}}" />
+                                                        <Setter Property="CommandParameter" Value="{Binding}" />
+                                                    </Style>
+                                                </MenuItem.ItemContainerStyle>
+                                            </MenuItem>
                                             <MenuItem Header="New Action.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableActions}">
                                             </MenuItem>
                                         </ContextMenu>

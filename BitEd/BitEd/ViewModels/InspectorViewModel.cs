@@ -1,8 +1,11 @@
 ﻿using BitEd.Core;
 using BitEd.Messages.Project;
+using BitEd.Messages.StatusBar;
 using BitEd.Models;
 using BitEd.Models.Entity;
+using BitEd.Models.Event;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
@@ -64,6 +67,7 @@ namespace BitEd.ViewModels
         {
             noSelectedNode = new EntityDummy();
             SetEntityNameOnEnter = new ActionCommand(SetEntityName, CanSetEntityName);
+            AddEventToObject = new ParamCommand(AddEvent, CanAddEvent);
             //Register message
             Messenger.Default.Register<SelectedItemChangeMessage>(this, ChangedSelectedProjectTreeItem);
         }
@@ -92,7 +96,32 @@ namespace BitEd.ViewModels
                 return true;
             }
         }
+        void AddEvent(object obj)
+        {
+            Debug.WriteLine("Add Event"+obj);
+            //Get Selected
+            BaseEvent SelectedEvent = obj as BaseEvent;
+            //add to active
+            if (!((EntityObject)ActiveNode).Events.Any(x=>x.Id==SelectedEvent.Id))
+            {
+                ((EntityObject)ActiveNode).Events.Add(SelectedEvent.GetActionlessClone());
+            }
+            else
+            {
+                Debug.WriteLine("Event already added");
+                SetStatusBarText.Send("Event already added");
+            }
+        }
+        bool CanAddEvent()
+        {
+            if (ActiveNode != null && ActiveNode.GetType() == typeof(EntityObject))
+            {
+                return true;
+            }
+            else return false;
+        }
         //Command Properties
         public ICommand SetEntityNameOnEnter { get; private set; }
+        public ICommand AddEventToObject { get; private set; }
     }
 }

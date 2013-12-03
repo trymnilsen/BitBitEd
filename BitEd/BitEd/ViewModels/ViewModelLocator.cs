@@ -18,6 +18,7 @@ namespace BitEd.ViewModels
             SimpleIoc.Default.Register<DirectoryViewModel>();
             SimpleIoc.Default.Register<ProjectViewModel>();
             SimpleIoc.Default.Register<InspectorViewModel>();
+            SimpleIoc.Default.Register<StatusBarViewModel>();
         }
 
         /// <summary>
@@ -31,6 +32,16 @@ namespace BitEd.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<DirectoryViewModel>();
+            }
+        }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public StatusBarViewModel StatusBarVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<StatusBarViewModel>();
             }
         }
         /// <summary>
