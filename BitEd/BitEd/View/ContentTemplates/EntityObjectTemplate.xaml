@@ -5,23 +5,50 @@
                     xmlns:actions="clr-namespace:BitEd.Models.Action.Actions"
                     xmlns:action="clr-namespace:BitEd.Models.Action"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:event="clr-namespace:BitEd.Models.Event">
+                    xmlns:event="clr-namespace:BitEd.Models.Event"
+                    xmlns:cusControl="clr-namespace:BitEd.CustomControl">
     <DataTemplate x:Key="InspectorEntityObject" DataType="{x:Type entityModels:EntityObject}">
         <StackPanel>
-            <TextBlock Text=" :: Object Events" Margin="2">
-                <TextBlock.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Add Event.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
-                            <MenuItem.ItemContainerStyle>
+            <StackPanel.Resources>
+                <ContextMenu x:Key="ContextMenu1">
+                    <MenuItem Header="Save" />
+                    <MenuItem Header="Print" />
+                    <Separator />
+                    <MenuItem Header="Exit" />
+                </ContextMenu>
+            </StackPanel.Resources>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text=" :: Object Events" Margin="2">
+                    <TextBlock.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Add Event.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
+                                <MenuItem.ItemContainerStyle>
+                                    <Style TargetType="{x:Type MenuItem}">
+                                        <Setter Property="Command" Value="{Binding InspectorVM.AddEventToObject, Source={StaticResource Locator}}" />
+                                        <Setter Property="CommandParameter" Value="{Binding}" />
+                                    </Style>
+                                </MenuItem.ItemContainerStyle>
+                            </MenuItem>
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
+                </TextBlock>
+                <cusControl:DropDownButton Grid.Column="1">
+                    <cusControl:DropDownButton.Resources>
+                        <ContextMenu x:Key="ContextMenuItems" ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
+                            <ContextMenu.ItemContainerStyle>
                                 <Style TargetType="{x:Type MenuItem}">
                                     <Setter Property="Command" Value="{Binding InspectorVM.AddEventToObject, Source={StaticResource Locator}}" />
                                     <Setter Property="CommandParameter" Value="{Binding}" />
                                 </Style>
-                            </MenuItem.ItemContainerStyle>
-                        </MenuItem>
-                    </ContextMenu>
-                </TextBlock.ContextMenu>
-            </TextBlock>
+                            </ContextMenu.ItemContainerStyle>
+                        </ContextMenu>
+                    </cusControl:DropDownButton.Resources>
+                </cusControl:DropDownButton>
+            </Grid>
             <!--Events-->
             <ItemsControl ItemsSource="{Binding Events}">
                 <ItemsControl.ItemTemplate>
@@ -68,6 +95,7 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

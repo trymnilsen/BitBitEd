@@ -89,6 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomControl\DropDownButton.xaml.cs">
+      <DependentUpon>DropDownButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Messages\StatusBar\SetStatusBarText.cs" />
     <Compile Include="Models\Entity\EntityCollections.cs" />
     <Compile Include="Models\StatusBar\StatusBarMessage.cs" />
@@ -137,6 +140,10 @@
     <Compile Include="Windows\StatusMessagesWindow.xaml.cs">
       <DependentUpon>StatusMessagesWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CustomControl\DropDownButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\ExpanderTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
