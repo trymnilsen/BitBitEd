@@ -16,7 +16,7 @@
             </Button.Style>
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="../Resources/entityPackage16.png" Width="16" Height="12"/>
+                    <Image Source="../Resources/add16B.png" Width="16" Height="12"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>

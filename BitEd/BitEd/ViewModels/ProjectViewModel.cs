@@ -1,4 +1,5 @@
-﻿using BitEd.Messages.Project;
+﻿using BitEd.Core;
+using BitEd.Messages.Project;
 using BitEd.Models;
 using BitEd.Models.Action;
 using BitEd.Models.Action.Actions;
@@ -52,7 +53,20 @@ namespace BitEd.ViewModels
             ProjectAssets.Add(RootNode);
             EntityObject testObj = new EntityObject(rootNode, "Object01");
             RootNode.Childs.Add(testObj);
+
+            AddCommands();
         }
+        private void AddCommands()
+        {
+            AddObject = new ParamCommand(addObjectEntity, null);
+        }
+        void addObjectEntity(object param)
+        {
+            Debug.WriteLine("Clicked add object");
+            EntityObject source = param as EntityObject;
+            source.AddObject();
+        }
+        public ParamCommand AddObject { get; private set; }
 
     }
 }

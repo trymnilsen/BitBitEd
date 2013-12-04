@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace BitEd.Models.Entity
         Object,
         Dummy,
     }
-    public abstract class EntityNode:INotifyPropertyChanged
+    public abstract class EntityNode:ObservableObject
     {
         [NonSerialized]
         private String name;
@@ -37,11 +38,7 @@ namespace BitEd.Models.Entity
             set
             {
                 name = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Name"));
-                    Debug.WriteLine("Changing to: " + value);
-                }
+                RaisePropertyChanged("Name");
             } 
         }
         
@@ -66,8 +63,13 @@ namespace BitEd.Models.Entity
         {
             return new EntityRoot();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public EntityObject AddObject()
+        {
+            EntityObject newEntity = new EntityObject(this, "New Object");
+            this.Childs.Add(newEntity);
+            Debug.WriteLine("Adding");
+            return newEntity;
+        }
     }
    
 }

@@ -8,5 +8,6 @@ namespace BitEd.ViewModels
 {
     class ScreenViewModel
     {
+
     }
 }

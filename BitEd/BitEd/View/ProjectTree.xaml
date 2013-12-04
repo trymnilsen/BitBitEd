@@ -32,7 +32,7 @@
                                 <MenuItem Header="Add Tilesheet"/>
                                 <MenuItem Header="Add Screen"/>
                                 <MenuItem Header="Add Folder"/>
-                                <MenuItem Header="Add Object"/>
+                                <MenuItem Header="Add Object" Command="{Binding ProjectVM.AddObject, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
                                 <MenuItem Header="Rename"/>
                                 <MenuItem Header="Remove"/>
                             </ContextMenu>

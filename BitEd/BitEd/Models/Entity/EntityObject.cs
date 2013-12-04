@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BitEd.Models.Entity
 {
-    class EntityObject:EntityNode
+    public class EntityObject:EntityNode
     {
         public EntitySprite sprite;
         public bool isVisible;
