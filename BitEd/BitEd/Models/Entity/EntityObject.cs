@@ -19,6 +19,10 @@ namespace BitEd.Models.Entity
         {
             Events = new ObservableCollection<BaseEvent>();
         }
+        public override bool Validate()
+        {
+            return true;
+        }
 
     }
     

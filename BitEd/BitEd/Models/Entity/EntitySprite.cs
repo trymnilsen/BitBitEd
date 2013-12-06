@@ -21,5 +21,9 @@ namespace BitEd.Models.Entity
         {
            
         }
+        public override bool Validate()
+        {
+            return true;
+        }
     }
 }

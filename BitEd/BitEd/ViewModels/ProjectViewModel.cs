@@ -62,9 +62,12 @@ namespace BitEd.ViewModels
         }
         void addObjectEntity(object param)
         {
-            Debug.WriteLine("Clicked add object");
-            EntityObject source = param as EntityObject;
-            source.AddObject();
+            if (param.GetType() == typeof(EntityObject))
+            {
+                Debug.WriteLine("Clicked add object" + param);
+                EntityObject source = param as EntityObject;
+                source.AddObject();
+            }
         }
         public ParamCommand AddObject { get; private set; }
 

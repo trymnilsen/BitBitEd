@@ -55,6 +55,8 @@ namespace BitEd.Models.Entity
             this.Name = Name;
             this.Type = type;
         }
+        public abstract bool Validate();
+
         public EntityFolder CreateFolder(EntityNode parent, String name)
         {
             return new EntityFolder(name,parent);

@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Messages\StatusBar\SetStatusBarText.cs" />
     <Compile Include="Models\Entity\EntityCollections.cs" />
+    <Compile Include="Models\Entity\InspectorProperty.cs" />
     <Compile Include="Models\StatusBar\StatusBarMessage.cs" />
     <Compile Include="Selectors\EntityInspectorTemplateSelector.cs" />
     <Compile Include="Core\ActionCommand.cs" />
@@ -104,8 +105,7 @@
     <Compile Include="Core\PushBindingCollection.cs" />
     <Compile Include="Core\PushBindingManager.cs" />
     <Compile Include="Messages\Project\SelectedItemChangeMessage.cs" />
-    <Compile Include="Models\Entity\Component.cs" />
-    <Compile Include="Models\Entity\Property.cs" />
+    <Compile Include="Models\Entity\InspectorComponent.cs" />
     <Compile Include="Selectors\PropertyTemplateSelector.cs" />
     <Compile Include="ViewModels\StatusBarViewModel.cs" />
     <Compile Include="View\DirectoryBrowser.xaml.cs">
