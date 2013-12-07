@@ -93,6 +93,9 @@
     <Compile Include="CustomControl\DropDownButton.xaml.cs">
       <DependentUpon>DropDownButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControl\FileBox.xaml.cs">
+      <DependentUpon>FileBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Messages\StatusBar\SetStatusBarText.cs" />
     <Compile Include="Models\Entity\EntityCollections.cs" />
     <Compile Include="Models\StatusBar\StatusBarMessage.cs" />
@@ -106,6 +109,7 @@
     <Compile Include="Core\PushBindingManager.cs" />
     <Compile Include="Messages\Project\SelectedItemChangeMessage.cs" />
     <Compile Include="Selectors\PropertyTemplateSelector.cs" />
+    <Compile Include="Validators\FileExist.cs" />
     <Compile Include="ViewModels\StatusBarViewModel.cs" />
     <Compile Include="View\DirectoryBrowser.xaml.cs">
       <DependentUpon>DirectoryBrowser.xaml</DependentUpon>
@@ -140,6 +144,10 @@
       <DependentUpon>StatusMessagesWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomControl\DropDownButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\FileBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

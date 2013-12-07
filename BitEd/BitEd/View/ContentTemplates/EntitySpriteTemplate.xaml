@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:entityModels="clr-namespace:BitEd.Models.Entity">
+                    xmlns:entityModels="clr-namespace:BitEd.Models.Entity"
+                    xmlns:CusControls="clr-namespace:BitEd.CustomControl">
     <DataTemplate x:Key="InspectorEntitySprite" DataType="{x:Type entityModels:EntitySprite}">
         <StackPanel>
             <TextBlock Text=" :: Sprite Properties" Margin="2"/>
@@ -12,21 +13,24 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Width"/>
-                    <TextBox IsEnabled="False" Text="{Binding Width, Mode=OneWay}" Grid.Column="1"/>
-                    <TextBlock Grid.Row="1" Text="Height"/>
-                    <TextBox IsEnabled="False" Text="{Binding Height, Mode=OneWay}" Grid.Column="1" Grid.Row="1" />
-                    <TextBlock Grid.Row="2" Text="Center X"/>
-                    <TextBox IsEnabled="False" Text="{Binding CenterX, Mode=OneWay}" Grid.Column="1" Grid.Row="2" />
-                    <TextBlock Grid.Row="3" Text="Center Y"/>
-                    <TextBox IsEnabled="False" Text="{Binding CenterY, Mode=OneWay}" Grid.Column="1" Grid.Row="3" />
-                    <TextBlock Grid.Row="4" Text="Size"/>
-                    <TextBox IsEnabled="False" Text="{Binding Size, Mode=OneWay}" Grid.Column="1" Grid.Row="4" />
+                    <TextBlock Text="Sprite File"/>
+                    <CusControls:FileBox Grid.Column="1"/>
+                    <TextBlock Text="Width" Grid.Row="1"/>
+                    <TextBox IsEnabled="False" Text="{Binding Width, Mode=OneWay}" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock Grid.Row="2" Text="Height"/>
+                    <TextBox IsEnabled="False" Text="{Binding Height, Mode=OneWay}" Grid.Column="1" Grid.Row="2" />
+                    <TextBlock Grid.Row="3" Text="Center X"/>
+                    <TextBox IsEnabled="False" Text="{Binding CenterX, Mode=OneWay}" Grid.Column="1" Grid.Row="3" />
+                    <TextBlock Grid.Row="4" Text="Center Y"/>
+                    <TextBox IsEnabled="False" Text="{Binding CenterY, Mode=OneWay}" Grid.Column="1" Grid.Row="4" />
+                    <TextBlock Grid.Row="5" Text="Size"/>
+                    <TextBox IsEnabled="False" Text="{Binding Size, Mode=OneWay}" Grid.Column="1" Grid.Row="5" />
                 </Grid>
             </Expander>
             <Expander Background="#313131" Template="{StaticResource SimpleExpanderTemp}" Header="Preview">
