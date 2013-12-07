@@ -89,6 +89,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\WaitCursorHelper.cs" />
     <Compile Include="CustomControl\DropDownButton.xaml.cs">
       <DependentUpon>DropDownButton.xaml</DependentUpon>
     </Compile>
@@ -155,6 +156,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContentTemplates\EntityDummyTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ContentTemplates\EntitySpriteTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ContentTemplates\Templates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,13 +7,16 @@ using BitEd.Models.Entity;
 using BitEd.Models.Event;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace BitEd.ViewModels
 {
@@ -59,6 +62,7 @@ namespace BitEd.ViewModels
         private void AddCommands()
         {
             AddObject = new ParamCommand(addObjectEntity, null);
+            AddSprite = new ParamCommand(addSprite, null);
         }
         void addObjectEntity(object param)
         {
@@ -69,7 +73,36 @@ namespace BitEd.ViewModels
                 source.AddObject();
             }
         }
+        void addSprite(object param)
+        {
+            EntityNode source = param as EntityNode;
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Sprite Files (*.png, *.bmp)|*.png;*.bmp";
+            bool? dialogOpen = dialog.ShowDialog();
+            dialog.Multiselect = false;
+            
+            if(dialogOpen==true)
+            {
+                using (new WaitCursorHelper())
+                {
+                    Debug.WriteLine("Filepath:" + dialog.FileName);
+                    byte[] image = File.ReadAllBytes(dialog.FileName);
+                    MemoryStream imageMemoryStream = new MemoryStream(image);
+                    BitmapImage loadedImage = new BitmapImage();
+                    loadedImage.CacheOption = BitmapCacheOption.OnLoad;
+                    loadedImage.BeginInit();
+                    loadedImage.StreamSource = imageMemoryStream;
+                    loadedImage.EndInit();
+                    
+                    //Entity
+                    EntitySprite entitySprite = new EntitySprite(source, Path.GetFileNameWithoutExtension(dialog.FileName), loadedImage);
+                    source.Childs.Add(entitySprite);
+                }
+            }
+        }
+
         public ParamCommand AddObject { get; private set; }
+        public ParamCommand AddSprite { get; private set; }
 
     }
 }

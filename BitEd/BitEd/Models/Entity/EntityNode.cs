@@ -21,13 +21,14 @@ namespace BitEd.Models.Entity
         Object,
         Dummy,
     }
-    public abstract class EntityNode:ObservableObject
+    public abstract class EntityNode : ObservableObject
     {
         [NonSerialized]
         private String name;
 
         private EntityNode parent;
 
+        public abstract bool Validate { get; }
         public EntityType Type { get; set; }
         public ObservableCollection<EntityNode> Childs { get; set; }
         public String Name {
@@ -39,6 +40,7 @@ namespace BitEd.Models.Entity
             {
                 name = value;
                 RaisePropertyChanged("Name");
+                RaisePropertyChanged("Validate");
             } 
         }
         
@@ -55,8 +57,6 @@ namespace BitEd.Models.Entity
             this.Name = Name;
             this.Type = type;
         }
-        public abstract bool Validate();
-
         public EntityFolder CreateFolder(EntityNode parent, String name)
         {
             return new EntityFolder(name,parent);

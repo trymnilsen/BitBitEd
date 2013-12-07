@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace BitEd.Models.Entity
 {
-    class EntityDummy:EntityNode
+    class EntityDummy : EntityNode
     {
+        public override bool Validate
+        {
+            get { return true; }
+        }
         public EntityDummy():
             base(null,EntityType.Dummy,"No Entity Selected")
         {
             
-        }
-        public override bool Validate()
-        {
-            return true;
         }
     }
 }

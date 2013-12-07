@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:entityModels="clr-namespace:BitEd.Models.Entity">
+    <DataTemplate x:Key="InspectorEntitySprite" DataType="{x:Type entityModels:EntitySprite}">
+        <StackPanel>
+            <TextBlock Text="{Binding}"/>
+            
+            <Image Source="{Binding ImageSource}" Width="200" Height="200"/>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

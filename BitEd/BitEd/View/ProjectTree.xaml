@@ -17,6 +17,15 @@
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type model:EntityNode}" ItemsSource="{Binding Childs}">
                     <TextBlock Text="{Binding Name}" ToolTip="{Binding ToolTip}" Tag="{Binding}">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Validate}" Value="False">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
                         <!--<TextBlock.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ClickedOnEntity}"/>
                         </TextBlock.InputBindings>-->
@@ -28,7 +37,7 @@
                                         </TextBlock>
                                     </DataTemplate>
                                 </ContextMenu.ItemTemplate>-->
-                                <MenuItem Header="Add Sprite"/>
+                                <MenuItem Header="Add Sprite" Command="{Binding ProjectVM.AddSprite, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
                                 <MenuItem Header="Add Tilesheet"/>
                                 <MenuItem Header="Add Screen"/>
                                 <MenuItem Header="Add Folder"/>

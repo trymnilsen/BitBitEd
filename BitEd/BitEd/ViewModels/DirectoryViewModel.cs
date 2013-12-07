@@ -22,7 +22,7 @@ namespace BitEd.ViewModels
             {
                 if (currentDirectory == null)
                 {
-                    return "C:/";//Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 }
                 else
                 {

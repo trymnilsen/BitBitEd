@@ -58,8 +58,7 @@
             <ContentControl.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="ContentTemplates/EntityObjectTemplate.xaml"/>
-                        <ResourceDictionary Source="ContentTemplates/EntityDummyTemplate.xaml"/>
+                        <ResourceDictionary Source="ContentTemplates/Templates.xaml"/>
                      </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
             </ContentControl.Resources>
@@ -69,6 +68,7 @@
                         <selector:EntityTemplateCollection>
                             <selector:EntityTemplate Value="{x:Type entity:EntityObject}" Template="{StaticResource ResourceKey=InspectorEntityObject}"/>
                             <selector:EntityTemplate Value="{x:Type entity:EntityDummy}" Template="{StaticResource ResourceKey=InspectorEntityDummy}"/>
+                            <selector:EntityTemplate Value="{x:Type entity:EntitySprite}" Template="{StaticResource ResourceKey=InspectorEntitySprite}"/>
                         </selector:EntityTemplateCollection>
                     </selector:EntityInspectorTemplateSelector.Templates>
                 </selector:EntityInspectorTemplateSelector>
