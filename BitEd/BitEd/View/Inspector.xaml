@@ -53,8 +53,8 @@
         </Border>
         <!--~Generic Item Change-->
         <!-- Properties part -->
-        
-        <ContentControl Grid.Row="1" Content="{Binding ActiveNode}" Margin="0,5,0,0">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Template="{StaticResource ResourceKey=ScrollViewerDarkControlTemplate}">
+        <ContentControl Content="{Binding ActiveNode}" Margin="0,5,0,0">
             <ContentControl.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
@@ -74,6 +74,6 @@
                 </selector:EntityInspectorTemplateSelector>
             </ContentControl.ContentTemplateSelector>
         </ContentControl>
-
+        </ScrollViewer>
     </Grid>
 </UserControl>

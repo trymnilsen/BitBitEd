@@ -3,9 +3,35 @@
                     xmlns:entityModels="clr-namespace:BitEd.Models.Entity">
     <DataTemplate x:Key="InspectorEntitySprite" DataType="{x:Type entityModels:EntitySprite}">
         <StackPanel>
-            <TextBlock Text="{Binding}"/>
-            
-            <Image Source="{Binding ImageSource}" Width="200" Height="200"/>
+            <TextBlock Text=" :: Sprite Properties" Margin="2"/>
+            <Expander Background="#313131" Template="{StaticResource SimpleExpanderTemp}" Header="Properties" IsExpanded="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Width"/>
+                    <TextBox IsEnabled="False" Text="{Binding Width, Mode=OneWay}" Grid.Column="1"/>
+                    <TextBlock Grid.Row="1" Text="Height"/>
+                    <TextBox IsEnabled="False" Text="{Binding Height, Mode=OneWay}" Grid.Column="1" Grid.Row="1" />
+                    <TextBlock Grid.Row="2" Text="Center X"/>
+                    <TextBox IsEnabled="False" Text="{Binding CenterX, Mode=OneWay}" Grid.Column="1" Grid.Row="2" />
+                    <TextBlock Grid.Row="3" Text="Center Y"/>
+                    <TextBox IsEnabled="False" Text="{Binding CenterY, Mode=OneWay}" Grid.Column="1" Grid.Row="3" />
+                    <TextBlock Grid.Row="4" Text="Size"/>
+                    <TextBox IsEnabled="False" Text="{Binding Size, Mode=OneWay}" Grid.Column="1" Grid.Row="4" />
+                </Grid>
+            </Expander>
+            <Expander Background="#313131" Template="{StaticResource SimpleExpanderTemp}" Header="Preview">
+                <Image Source="{Binding ImageSource}" Width="200" Height="200"/>
+            </Expander>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>
