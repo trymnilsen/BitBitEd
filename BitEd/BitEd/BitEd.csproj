@@ -89,6 +89,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\TypeToStringConverter.cs" />
     <Compile Include="Core\WaitCursorHelper.cs" />
     <Compile Include="CustomControl\DropDownButton.xaml.cs">
       <DependentUpon>DropDownButton.xaml</DependentUpon>
@@ -253,7 +254,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converter\" />
     <Folder Include="Messages\Inspector\" />
     <Folder Include="Models\Inspector\" />
   </ItemGroup>
@@ -300,6 +300,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\add16B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\entityProject16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\entitySprite16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

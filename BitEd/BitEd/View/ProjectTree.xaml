@@ -6,6 +6,7 @@
              xmlns:model="clr-namespace:BitEd.Models.Entity"
              xmlns:view="clr-namespace:BitEd.ViewModels"
              xmlns:core="clr-namespace:BitEd.Core"
+             xmlns:convert="clr-namespace:BitEd.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding ProjectVM, Source={StaticResource Locator}}">
@@ -16,37 +17,59 @@
             </core:PushBindingManager.PushBindings>
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type model:EntityNode}" ItemsSource="{Binding Childs}">
-                    <TextBlock Text="{Binding Name}" ToolTip="{Binding ToolTip}" Tag="{Binding}">
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Validate}" Value="False">
-                                        <Setter Property="Foreground" Value="Red"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                        <!--<TextBlock.InputBindings>
-                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ClickedOnEntity}"/>
-                        </TextBlock.InputBindings>-->
-                        <TextBlock.ContextMenu>
-                            <ContextMenu>
-                                <!--<ContextMenu.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType=TextBlock}}" Text="{Binding}" MouseLeftButtonDown="NodeText_MouseLeftButtonDown">
-                                        </TextBlock>
-                                    </DataTemplate>
-                                </ContextMenu.ItemTemplate>-->
-                                <MenuItem Header="Add Sprite" Command="{Binding ProjectVM.AddSprite, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
-                                <MenuItem Header="Add Tilesheet"/>
-                                <MenuItem Header="Add Screen"/>
-                                <MenuItem Header="Add Folder"/>
-                                <MenuItem Header="Add Object" Command="{Binding ProjectVM.AddObject, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
-                                <MenuItem Header="Rename"/>
-                                <MenuItem Header="Remove"/>
-                            </ContextMenu>
-                        </TextBlock.ContextMenu>
-                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="16" Height="16" DockPanel.Dock="Left">
+                            <Image.Resources>
+                                <convert:TypeToStringConverter x:Key="TypeToString"/>
+                            </Image.Resources>
+                            <Image.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToString}}" Value="EntityRoot">
+                                            <Setter Property="Image.Source" Value="../Resources/entityProject16.png"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToString}}" Value="EntityObject">
+                                            <Setter Property="Image.Source" Value="../Resources/entityObject16.png"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToString}}" Value="EntitySprite">
+                                            <Setter Property="Image.Source" Value="../Resources/entitySprite16.png"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock Text="{Binding Name}" ToolTip="{Binding ToolTip}" Tag="{Binding}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Validate}" Value="False">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                            <!--<TextBlock.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ClickedOnEntity}"/>
+                            </TextBlock.InputBindings>-->
+                            <TextBlock.ContextMenu>
+                                <ContextMenu>
+                                    <!--<ContextMenu.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType=TextBlock}}" Text="{Binding}" MouseLeftButtonDown="NodeText_MouseLeftButtonDown">
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ContextMenu.ItemTemplate>-->
+                                    <MenuItem Header="Add Sprite" Command="{Binding ProjectVM.AddSprite, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
+                                    <MenuItem Header="Add Tilesheet"/>
+                                    <MenuItem Header="Add Screen"/>
+                                    <MenuItem Header="Add Folder"/>
+                                    <MenuItem Header="Add Object" Command="{Binding ProjectVM.AddObject, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
+                                    <MenuItem Header="Rename"/>
+                                    <MenuItem Header="Remove"/>
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
+                    </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>

@@ -22,10 +22,7 @@ namespace BitEd.Selectors
             return base.SelectTemplate(item, container);
         }
     }
-    public class EntityTemplateCollection : List<EntityTemplate>
-    {
-
-    }
+    public class EntityTemplateCollection : List<EntityTemplate> { }
     public class EntityTemplate
     {
         public DataTemplate Template { get; set; }

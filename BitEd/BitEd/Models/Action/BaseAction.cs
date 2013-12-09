@@ -23,9 +23,6 @@ namespace BitEd.Models.Action
 
     public class BaseAction
     {
-
-        protected string name;
-
         public ExecutionPriority ExecutionOrder { get; set; }
         public ObservableCollection<ActionProperty> ActionProperties { get; set; }
         public bool isExclusive { get; set; }

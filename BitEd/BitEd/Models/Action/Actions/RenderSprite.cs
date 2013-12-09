@@ -9,8 +9,10 @@ namespace BitEd.Models.Action.Actions
     class RenderSprite:BaseAction
     {
         public RenderSprite()
+            :base(ExecutionPriority.Rendering)
         {
             base.Name = "Render Sprite";
+            ActionProperty assetProperty = new ActionProperty();
         }
     }
 }
