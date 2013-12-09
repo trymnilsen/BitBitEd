@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="Messages\StatusBar\SetStatusBarText.cs" />
     <Compile Include="Models\Entity\EntityCollections.cs" />
+    <Compile Include="Models\Entity\EntityFactory.cs" />
     <Compile Include="Models\StatusBar\StatusBarMessage.cs" />
     <Compile Include="Selectors\EntityInspectorTemplateSelector.cs" />
     <Compile Include="Core\ActionCommand.cs" />

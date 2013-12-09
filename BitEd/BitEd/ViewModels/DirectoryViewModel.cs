@@ -111,8 +111,6 @@ namespace BitEd.ViewModels
                 {
                     DirectoryPath = pressedEntry.Path;
                 }
-                Debug.WriteLine("IsFolder");
-                Debug.WriteLine(DirectoryPath);
             }
 
         }
