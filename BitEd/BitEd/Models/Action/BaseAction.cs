@@ -38,7 +38,7 @@ namespace BitEd.Models.Action
         /// <summary>
         /// Needd for correct display of Action name
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public override string ToString()
         {
             return Name;
