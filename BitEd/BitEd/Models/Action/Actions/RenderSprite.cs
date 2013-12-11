@@ -13,6 +13,8 @@ namespace BitEd.Models.Action.Actions
         {
             base.Name = "Render Sprite";
             ActionProperty assetProperty = new ActionProperty();
+            assetProperty.Name = "Foo";
+            this.ActionProperties = assetProperty;
         }
     }
 }
