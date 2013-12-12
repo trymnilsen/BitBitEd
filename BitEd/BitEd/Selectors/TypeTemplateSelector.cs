@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace BitEd.Selectors
 {
-    public class EntityInspectorTemplateSelector:DataTemplateSelector
+    public class TypeTemplateSelector:DataTemplateSelector
     {
         public EntityTemplateCollection Templates { get; set; }
         public override DataTemplate SelectTemplate(object item, DependencyObject container)

@@ -101,7 +101,7 @@
     <Compile Include="Models\Entity\EntityCollections.cs" />
     <Compile Include="Models\Entity\EntityFactory.cs" />
     <Compile Include="Models\StatusBar\StatusBarMessage.cs" />
-    <Compile Include="Selectors\EntityInspectorTemplateSelector.cs" />
+    <Compile Include="Selectors\TypeTemplateSelector.cs" />
     <Compile Include="Core\ActionCommand.cs" />
     <Compile Include="Core\BindingProxy.cs" />
     <Compile Include="Core\FreezableBinding.cs" />
@@ -165,11 +165,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ContentTemplates\EntityDummyTemplate.xaml">
+    <Page Include="View\ContentTemplates\Entities\EntityDummyTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ContentTemplates\EntitySpriteTemplate.xaml">
+    <Page Include="View\ContentTemplates\Entities\EntitySpriteTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ContentTemplates\Properties\StandardTypeProperties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,7 +189,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ContentTemplates\EntityObjectTemplate.xaml">
+    <Page Include="View\ContentTemplates\Entities\EntityObjectTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

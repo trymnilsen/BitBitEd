@@ -63,15 +63,15 @@
                 </ResourceDictionary>
             </ContentControl.Resources>
             <ContentControl.ContentTemplateSelector>
-                <selector:EntityInspectorTemplateSelector>
-                    <selector:EntityInspectorTemplateSelector.Templates>
+                <selector:TypeTemplateSelector>
+                    <selector:TypeTemplateSelector.Templates>
                         <selector:EntityTemplateCollection>
                             <selector:EntityTemplate Value="{x:Type entity:EntityObject}" Template="{StaticResource ResourceKey=InspectorEntityObject}"/>
                             <selector:EntityTemplate Value="{x:Type entity:EntityDummy}" Template="{StaticResource ResourceKey=InspectorEntityDummy}"/>
                             <selector:EntityTemplate Value="{x:Type entity:EntitySprite}" Template="{StaticResource ResourceKey=InspectorEntitySprite}"/>
                         </selector:EntityTemplateCollection>
-                    </selector:EntityInspectorTemplateSelector.Templates>
-                </selector:EntityInspectorTemplateSelector>
+                    </selector:TypeTemplateSelector.Templates>
+                </selector:TypeTemplateSelector>
             </ContentControl.ContentTemplateSelector>
         </ContentControl>
         </ScrollViewer>
