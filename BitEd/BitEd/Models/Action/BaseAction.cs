@@ -35,6 +35,20 @@ namespace BitEd.Models.Action
             ActionProperties = new ObservableCollection<ActionProperty>();
             ExecutionOrder = priority;
         }
+        public BaseAction getClone()
+        {
+            BaseAction clone = new BaseAction();
+            clone.ExecutionOrder = this.ExecutionOrder;
+            clone.isExclusive = this.isExclusive;
+            clone.Name = this.Name;
+            //Add the properties
+            clone.ActionProperties = new ObservableCollection<ActionProperty>();
+            foreach(ActionProperty ap in this.ActionProperties)
+            {
+                clone.ActionProperties.Add(new ActionProperty() { Name = ap.Name, Value = ap.Value });
+            }
+            return clone;
+        }
         /// <summary>
         /// Needd for correct display of Action name
         /// </summary>

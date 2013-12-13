@@ -6,6 +6,7 @@
                     xmlns:action="clr-namespace:BitEd.Models.Action"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:event="clr-namespace:BitEd.Models.Event"
+                    xmlns:core="clr-namespace:BitEd.Core"
                     xmlns:cusControl="clr-namespace:BitEd.CustomControl">
     <DataTemplate x:Key="InspectorEntityObject" DataType="{x:Type entityModels:EntityObject}">
         <StackPanel>
@@ -55,6 +56,9 @@
                     <!--EventsTemplate-->
                     <DataTemplate DataType="{x:Type event:BaseEvent}">
                         <Expander Background="#313131" Template="{StaticResource SimpleExpanderTemp}">
+                            <Expander.Resources>
+                                <core:BindingProxy x:Key="ContextMenuProxy" ProxyData="{Binding}"/>
+                            </Expander.Resources>
                             <Expander.Header>
                                 <TextBlock Text="{Binding Name}">
                                     <TextBlock.ContextMenu>
@@ -69,6 +73,12 @@
                                                 </MenuItem.ItemContainerStyle>
                                             </MenuItem>
                                             <MenuItem Header="New Action.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableActions}">
+                                                <MenuItem.ItemContainerStyle>
+                                                    <Style TargetType="{x:Type MenuItem}">
+                                                        <Setter Property="Command" Value="{Binding ProxyData.AddActionToEvent, Source={StaticResource ResourceKey=ContextMenuProxy}}" />
+                                                        <Setter Property="CommandParameter" Value="{Binding}" />
+                                                    </Style>
+                                                </MenuItem.ItemContainerStyle>
                                             </MenuItem>
                                         </ContextMenu>
                                     </TextBlock.ContextMenu>
