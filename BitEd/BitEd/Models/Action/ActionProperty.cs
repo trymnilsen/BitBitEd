@@ -9,6 +9,6 @@ namespace BitEd.Models.Action
     public class ActionProperty
     {
         public string Name { get; set; }
-        public object value { get; set; }
+        public object Value { get; set; }
     }
 }

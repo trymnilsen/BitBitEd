@@ -173,7 +173,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ContentTemplates\Properties\StandardTypeProperties.xaml">
+    <Page Include="View\ContentTemplates\Properties\SpriteEntityPropertyTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ContentTemplates\Properties\StandardTypePropertyTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

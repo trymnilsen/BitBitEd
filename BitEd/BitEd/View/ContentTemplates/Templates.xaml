@@ -1,9 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
+        <!--EntityTemplates-->
         <ResourceDictionary Source="Entities/EntityObjectTemplate.xaml"/>
         <ResourceDictionary Source="Entities/EntityDummyTemplate.xaml"/>
         <ResourceDictionary Source="Entities/EntitySpriteTemplate.xaml"/>
-        <ResourceDictionary Source="Properties/StandardTypeProperties.xaml"/>
+        <!--Properties-->
+        <ResourceDictionary Source="Properties/StandardTypePropertyTemplate.xaml"/>
+        <ResourceDictionary Source="Properties/SpriteEntityPropertyTemplate.xaml"/>
      </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -80,13 +80,16 @@
                                     <DataTemplate DataType="{x:Type action:BaseAction}">
                                         <Expander Header="{Binding Name}" Background="#4c4c4c" Template="{StaticResource SimpleExpanderTemp}" Margin="10,0,0,0">
                                             <!--Action Properties-->
-                                            <ItemsControl ItemsSource="{Binding ActionProperties}">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate DataType="{x:Type action:ActionProperty}">
-                                                        <TextBlock Text="{Binding Name}"/>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                            <StackPanel>
+                                            <TextBlock Text="{Binding ActionProperties.Count}"/>
+                                                <ItemsControl ItemsSource="{Binding ActionProperties}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate DataType="{x:Type action:ActionProperty}">
+                                                            <TextBlock Text="{Binding}"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
                                         </Expander>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
