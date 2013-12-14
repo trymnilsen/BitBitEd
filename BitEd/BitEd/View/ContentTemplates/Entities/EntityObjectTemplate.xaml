@@ -7,6 +7,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:event="clr-namespace:BitEd.Models.Event"
                     xmlns:core="clr-namespace:BitEd.Core"
+                    xmlns:converter="clr-namespace:BitEd.Converter"
                     xmlns:cusControl="clr-namespace:BitEd.CustomControl">
     <DataTemplate x:Key="InspectorEntityObject" DataType="{x:Type entityModels:EntityObject}">
         <StackPanel>
@@ -37,7 +38,7 @@
                         </ContextMenu>
                     </TextBlock.ContextMenu>
                 </TextBlock>
-                <cusControl:DropDownButton Grid.Column="1">
+                <cusControl:DropDownButton Grid.Column="1" Content="Test">
                     <cusControl:DropDownButton.Resources>
                         <ContextMenu x:Key="ContextMenuItems" ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
                             <ContextMenu.ItemContainerStyle>
@@ -47,6 +48,7 @@
                                 </Style>
                             </ContextMenu.ItemContainerStyle>
                         </ContextMenu>
+                        <Image x:Key="TemplateContent" Source="../../../Resources/add16B.png" Width="16" Height="12"/>
                     </cusControl:DropDownButton.Resources>
                 </cusControl:DropDownButton>
             </Grid>
@@ -85,30 +87,58 @@
                                 </TextBlock>
                             </Expander.Header>
                             <!-- Actions-->
-                            <ItemsControl ItemsSource="{Binding Actions}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type action:BaseAction}">
-                                        <Expander Header="{Binding Name}" Background="#4c4c4c" Template="{StaticResource SimpleExpanderTemp}" Margin="10,0,0,0">
-                                            <!--Action Properties-->
-                                            <StackPanel>
-                                            <TextBlock Text="{Binding ActionProperties.Count}"/>
-                                                <ItemsControl ItemsSource="{Binding ActionProperties}">
-                                                    <ItemsControl.ItemTemplate>
-                                                        <DataTemplate DataType="{x:Type action:ActionProperty}">
-                                                            <TextBlock Text="{Binding}"/>
-                                                        </DataTemplate>
-                                                    </ItemsControl.ItemTemplate>
-                                                </ItemsControl>
-                                            </StackPanel>
-                                        </Expander>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                            <StackPanel>
+                                <ItemsControl ItemsSource="{Binding Actions}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate DataType="{x:Type action:BaseAction}">
+                                            <Expander Header="{Binding Name}" Background="#4c4c4c" Template="{StaticResource SimpleExpanderTemp}" Margin="10,0,0,0">
+                                                <!--Action Properties-->
+                                                <StackPanel>
+                                                <TextBlock Text="{Binding ActionProperties.Count}"/>
+                                                    <ItemsControl ItemsSource="{Binding ActionProperties}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate DataType="{x:Type action:ActionProperty}">
+                                                                <TextBlock Text="{Binding}"/>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Expander>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Label Content="No Actions Added"  Margin="10,0,1,0"  Background="#4c4c4c" Padding="5,0,0,0">
+                                    <Label.Style>
+                                        <Style TargetType="{x:Type Label}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Actions.Count, Converter={StaticResource GreaterThanConverter}, ConverterParameter=0}" Value="True">
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Actions.Count}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Label.Style>
+                                </Label>
+                            </StackPanel>
                         </Expander>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-
+            <cusControl:DropDownButton Grid.Column="1" Content="Test" Margin="0,20,0,0">
+                <cusControl:DropDownButton.Resources>
+                    <ContextMenu x:Key="ContextMenuItems" ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
+                        <ContextMenu.ItemContainerStyle>
+                            <Style TargetType="{x:Type MenuItem}">
+                                <Setter Property="Command" Value="{Binding InspectorVM.AddEventToObject, Source={StaticResource Locator}}" />
+                                <Setter Property="CommandParameter" Value="{Binding}" />
+                            </Style>
+                        </ContextMenu.ItemContainerStyle>
+                    </ContextMenu>
+                    <Button x:Key="TemplateContent" Template="{StaticResource TextButtonTemplate}" Content="Add Event"/>
+                </cusControl:DropDownButton.Resources>
+            </cusControl:DropDownButton>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>
