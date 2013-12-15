@@ -92,24 +92,26 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate DataType="{x:Type action:BaseAction}">
                                             <Expander Header="{Binding Name}" Background="#4c4c4c" Template="{StaticResource SimpleExpanderTemp}" Margin="10,0,0,0">
+                                                <Expander.ContextMenu>
+                                                    <ContextMenu>
+                                                        <MenuItem Header="Remove" Command="{Binding ProxyData.RemoveActionFromEvent, Source={StaticResource ResourceKey=ContextMenuProxy}}" CommandParameter="{Binding}"/>
+                                                    </ContextMenu>
+                                                </Expander.ContextMenu>
                                                 <!--Action Properties-->
-                                                <StackPanel>
-                                                <TextBlock Text="{Binding ActionProperties.Count}"/>
-                                                    <ItemsControl ItemsSource="{Binding ActionProperties}">
-                                                        <ItemsControl.ItemTemplate>
-                                                            <DataTemplate DataType="{x:Type action:ActionProperty}">
-                                                                <TextBlock Text="{Binding}"/>
-                                                            </DataTemplate>
-                                                        </ItemsControl.ItemTemplate>
-                                                    </ItemsControl>
-                                                </StackPanel>
+                                                <ItemsControl ItemsSource="{Binding ActionProperties}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate DataType="{x:Type action:ActionProperty}">
+                                                            <TextBlock Text="{Binding}"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
                                             </Expander>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
-                                <Label Content="No Actions Added"  Margin="10,0,1,0"  Background="#4c4c4c" Padding="5,0,0,0">
-                                    <Label.Style>
-                                        <Style TargetType="{x:Type Label}">
+                                <TextBlock Text="No Actions Added"  Margin="10,0,1,0"  Background="#4c4c4c">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding Actions.Count, Converter={StaticResource GreaterThanConverter}, ConverterParameter=0}" Value="True">
                                                     <Setter Property="Visibility" Value="Hidden"/>
@@ -119,8 +121,8 @@
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
-                                    </Label.Style>
-                                </Label>
+                                    </TextBlock.Style>
+                                </TextBlock>
                             </StackPanel>
                         </Expander>
                     </DataTemplate>

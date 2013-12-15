@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BitEd.Models.Event
 {
@@ -20,7 +21,9 @@ namespace BitEd.Models.Event
         public BaseEvent()
         {
             Actions = new ObservableCollection<BaseAction>();
+            //Commands
             AddActionToEvent = new ParamCommand(AddAction, null);
+            RemoveActionFromEvent = new ParamCommand(RemoveAction, null);
         }
         /// <summary>
         /// Does a deep copy and retunrs an equal event without actions
@@ -45,7 +48,13 @@ namespace BitEd.Models.Event
             Debug.WriteLine("Adding action" + selectedAction.Name);
             Actions.Add(selectedAction.getClone());
         }
-        public ParamCommand AddActionToEvent { get; set; }
+        private void RemoveAction(object action)
+        {
+            BaseAction toRemove = action as BaseAction;
+            Actions.Remove(toRemove);
+        }
+        public ICommand RemoveActionFromEvent { get; set; }
+        public ICommand AddActionToEvent { get; set; }
         
     }
 }
