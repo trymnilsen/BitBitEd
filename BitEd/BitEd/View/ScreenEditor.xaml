@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:entity="clr-namespace:BitEd.Models.Entity"
+             xmlns:core="clr-namespace:BitEd.Core"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -68,7 +70,7 @@
                 <core:BindingProxy x:Key="DataContextProxy" ProxyData="{Binding}"/>
             </TabControl.Resources>
             <TabControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type model:GameScreenEntity}">
+                <DataTemplate DataType="{x:Type entity:EntityScreen}">
                     <TextBlock Text="{Binding Header}">
                         <TextBlock.ContextMenu>
                             <ContextMenu>
@@ -83,7 +85,7 @@
                 </DataTemplate>
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
-                <DataTemplate DataType="{x:Type model:GameScreenEntity}">
+                <DataTemplate DataType="{x:Type entity:EntityScreen}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>

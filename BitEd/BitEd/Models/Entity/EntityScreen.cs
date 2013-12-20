@@ -10,10 +10,10 @@ namespace BitEd.Models.Entity
     public class EntityScreen
     {
         public ObservableCollection<EntityScreenObjectInstance> Instances { get; private set; }
-
+        public string Header { get; set; }
         public EntityScreen()
         {
-
+            Header = "Test Screen";
         }
     }
 }

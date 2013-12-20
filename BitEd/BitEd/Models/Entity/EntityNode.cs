@@ -27,7 +27,7 @@ namespace BitEd.Models.Entity
         private String name;
 
         private EntityNode parent;
-
+        public int Guid { get; private set; }
         public abstract bool Validate { get; }
         public EntityType Type { get; set; }
         public ObservableCollection<EntityNode> Childs { get; set; }
