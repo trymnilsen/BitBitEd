@@ -19,14 +19,13 @@ namespace BitEd.ViewModels
             SimpleIoc.Default.Register<ProjectViewModel>();
             SimpleIoc.Default.Register<InspectorViewModel>();
             SimpleIoc.Default.Register<StatusBarViewModel>();
+            SimpleIoc.Default.Register<ScreenViewModel>();
         }
 
         /// <summary>
         /// Gets the Directory view's viewmodel
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
-            "CA1822:MarkMembersAsStatic",
-            Justification = "This non-static member is needed for data binding purposes.")]
+
         public DirectoryViewModel DirectoryVM
         {
             get
@@ -34,9 +33,10 @@ namespace BitEd.ViewModels
                 return ServiceLocator.Current.GetInstance<DirectoryViewModel>();
             }
         }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
-            "CA1822:MarkMembersAsStatic",
-            Justification = "This non-static member is needed for data binding purposes.")]
+
+        /// <summary>
+        /// Gets the Statusbar's view viewmodel
+        /// </summary>
         public StatusBarViewModel StatusBarVM
         {
             get
@@ -47,9 +47,7 @@ namespace BitEd.ViewModels
         /// <summary>
         /// Gets the ProjectTree's view viewmodel
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
-            "CA1822:MarkMembersAsStatic",
-            Justification = "This non-static member is needed for data binding purposes.")]
+
         public ProjectViewModel ProjectVM
         {
             get
@@ -61,9 +59,7 @@ namespace BitEd.ViewModels
         /// <summary>
         /// Gets the Inspector view viewmodel
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
-            "CA1822:MarkMembersAsStatic",
-            Justification = "This non-static member is needed for data binding purposes.")]
+
         public InspectorViewModel InspectorVM
         {
             get
@@ -72,12 +68,23 @@ namespace BitEd.ViewModels
             }
         }
 
+        /// <summary>
+        /// Gets the ScreenEditors view viewmodel
+        /// </summary>
+        public ScreenViewModel ScreenVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ScreenViewModel>();
+            }
+        }
 
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>
         public static void Cleanup()
         {
+
         }
     }
 }

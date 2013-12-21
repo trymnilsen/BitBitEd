@@ -101,19 +101,18 @@
                 </ContentControl>-->
                 <Grid Grid.Row="2" Margin="0,4,4,0">
                         <TabControl Style="{StaticResource ResourceKey=TabControlBaseDarkStyle}">
-                            <TabItem Header="Directory" Style="{StaticResource ResourceKey=TabItemDarkStyle}">
+                        <TabItem Header="Actions" Style="{StaticResource ResourceKey=TabItemDarkStyle}"></TabItem>
+                        <TabItem Header="Directory" Style="{StaticResource ResourceKey=TabItemDarkStyle}">
                                 <view:DirectoryBrowser/>
                             </TabItem>
-                            <TabItem Header="Actions" Style="{StaticResource ResourceKey=TabItemDarkStyle}"></TabItem>
+                            
                     
                         </TabControl>
                 </Grid>
             </Grid>
             <Label Grid.Column="1" Content="Tool" Background="#404040" Margin="0,4,4,0"/>
             <!--Edit-->
-            <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Foo" Grid.Column="2" Margin="0,4,4,0">
-                <Label Content="Lol333"/>
-            </ContentControl>
+            <view:ScreenEditor Grid.Column="2" Margin="0,4,4,0"/>
             <!--~Edit-->
             <!--~Assets/propeditor-->
             <ContentControl Template="{StaticResource ResourceKey=EditorControlContainerStyle}" Tag="Inspector" Margin="0,4,4,0" Grid.Column="4">
