@@ -63,6 +63,7 @@ namespace BitEd.ViewModels
         {
             AddObject = new ParamCommand(addObjectEntity, null);
             AddSprite = new ParamCommand(addSprite, null);
+            AddScreen = new ParamCommand(addScreen, null);
         }
         void addObjectEntity(object param)
         {
@@ -100,9 +101,16 @@ namespace BitEd.ViewModels
                 }
             }
         }
+        void addScreen(object param)
+        {
+            EntityNode source = param as EntityNode;
+            EntityScreen newScreen = new EntityScreen("Foo", source);
+            source.Childs.Add(newScreen);
+        }
 
         public ParamCommand AddObject { get; private set; }
         public ParamCommand AddSprite { get; private set; }
+        public ParamCommand AddScreen { get; private set; }
 
     }
 }

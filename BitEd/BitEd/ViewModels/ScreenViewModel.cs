@@ -18,8 +18,8 @@ namespace BitEd.ViewModels
         public ScreenViewModel()
         {
             OpenScreens = new ObservableCollection<EntityScreen>();
-            OpenScreens.Add(new EntityScreen());
-            OpenScreens.Add(new EntityScreen());
+            //OpenScreens.Add(new EntityScreen());
+            //OpenScreens.Add(new EntityScreen());
         }
 
         public ICommand CloseAllWindows { get; private set; }

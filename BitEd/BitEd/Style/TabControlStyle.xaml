@@ -7,7 +7,7 @@
                 <ControlTemplate TargetType="TabControl">
                     <Grid Background="#404040">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="18"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
