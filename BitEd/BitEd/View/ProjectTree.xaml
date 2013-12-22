@@ -19,11 +19,9 @@
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type model:EntityNode}" ItemsSource="{Binding Childs}">
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel.Triggers>
-                            <EventTrigger RoutedEvent="OnLoad">
-                                
-                            </EventTrigger>
-                        </StackPanel.Triggers>
+                        <StackPanel.InputBindings>
+                            <!--<MouseBinding MouseAction="LeftDoubleClick"--> 
+                        </StackPanel.InputBindings>
                         <Image Width="16" Height="16" DockPanel.Dock="Left">
                             <Image.Resources>
                                 <convert:TypeToStringConverter x:Key="TypeToString"/>
