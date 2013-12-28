@@ -12,7 +12,7 @@
         <Grid.Resources>
             <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=TabItemDarkStyle}"/>
         </Grid.Resources>
-        <TabControl BorderThickness="0" Name="TabControlUnit" ItemsSource="{Binding OpenScreens}" SelectedItem="{Binding SelectedScreenTab}" Style="{StaticResource ResourceKey=TabControlBaseDarkStyle}">
+        <TabControl BorderThickness="0" Name="TabControlUnit" ItemsSource="{Binding OpenScreens}" SelectedItem="{Binding SelectedScreen}" Style="{StaticResource ResourceKey=TabControlBaseDarkStyle}">
 
             <TabControl.Resources>
                 <core:BindingProxy x:Key="DataContextProxy" ProxyData="{Binding}"/>
@@ -44,18 +44,18 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" Template="{StaticResource ResourceKey=ScrollViewerDarkControlTemplate}">
                             <Grid Width="{Binding ScreenSizeX}" Height="{Binding ScreenSizeY}" Margin="-1">
                                 <Grid.Resources>
-                                    <Style x:Key="ScreenGridStyle" TargetType="{x:Type Canvas}">
+                                    <!--<Style x:Key="ScreenGridStyle" TargetType="{x:Type Canvas}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding IsShowingGrid}" Value="false">
                                                 <Setter Property="Canvas.Visibility" Value="Hidden"/>
                                             </DataTrigger>
                                         </Style.Triggers>
-                                    </Style>
+                                    </Style>-->
                                 </Grid.Resources>
                                 <Grid.LayoutTransform>
                                     <ScaleTransform ScaleX="{Binding ScreenScale}" ScaleY="{Binding ScreenScale}"/>
                                 </Grid.LayoutTransform>
-                                <Grid.Background>
+                                <!--<Grid.Background>
                                     <VisualBrush TileMode="Tile" 
                                                  Viewport="{Binding GridViewPort}" 
                                                  ViewportUnits="Absolute" 
@@ -70,7 +70,7 @@
                                             </Canvas>
                                         </VisualBrush.Visual>
                                     </VisualBrush>
-                                </Grid.Background>
+                                </Grid.Background>-->
                                 <ItemsControl ItemsSource="{Binding ScreenInstances}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>

@@ -11,6 +11,8 @@ namespace BitEd.Models.Entity
     {
         public ObservableCollection<EntityScreenObjectInstance> Instances { get; private set; }
         public string Header { get; set; }
+        public int ScreenSizeX { get; set; }
+        public int ScreenSizeY { get; set; }
         public override bool Validate
         {
             get { return true; }

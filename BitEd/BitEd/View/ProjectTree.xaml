@@ -55,9 +55,9 @@
                                     </Style.Triggers>
                                 </Style>
                             </TextBlock.Style>
-                            <!--<TextBlock.InputBindings>
-                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ClickedOnEntity}"/>
-                            </TextBlock.InputBindings>-->
+                            <TextBlock.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ProjectVM.DoubleClickedOnEntity, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
+                            </TextBlock.InputBindings>
                             <TextBlock.ContextMenu>
                                 <ContextMenu>
                                     <!--<ContextMenu.ItemTemplate>

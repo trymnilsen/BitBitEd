@@ -64,6 +64,13 @@ namespace BitEd.ViewModels
             AddObject = new ParamCommand(addObjectEntity, null);
             AddSprite = new ParamCommand(addSprite, null);
             AddScreen = new ParamCommand(addScreen, null);
+            DoubleClickedOnEntity = new ParamCommand(openEntity, null);
+        }
+        void openEntity(object param)
+        {
+            EntityNode source = param as EntityNode;
+            Debug.WriteLine("Double Clicked on:" + source.Name);
+            OpenItemMessage.Send(source);
         }
         void addObjectEntity(object param)
         {
@@ -107,7 +114,7 @@ namespace BitEd.ViewModels
             EntityScreen newScreen = new EntityScreen("Foo", source);
             source.Childs.Add(newScreen);
         }
-
+        public ParamCommand DoubleClickedOnEntity { get; private set; }
         public ParamCommand AddObject { get; private set; }
         public ParamCommand AddSprite { get; private set; }
         public ParamCommand AddScreen { get; private set; }
