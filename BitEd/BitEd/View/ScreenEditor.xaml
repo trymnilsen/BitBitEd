@@ -9,6 +9,10 @@
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding ScreenVM, Source={StaticResource Locator}}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="25px"/>
+        </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=TabItemDarkStyle}"/>
         </Grid.Resources>
@@ -41,85 +45,107 @@
                             <RowDefinition/>
                             <RowDefinition Height="21"/>
                         </Grid.RowDefinitions>
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto" Template="{StaticResource ResourceKey=ScrollViewerDarkControlTemplate}">
-                            <Grid Width="{Binding ScreenSizeX}" Height="{Binding ScreenSizeY}" Margin="-1">
-                                <Grid.Resources>
-                                    <!--<Style x:Key="ScreenGridStyle" TargetType="{x:Type Canvas}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsShowingGrid}" Value="false">
-                                                <Setter Property="Canvas.Visibility" Value="Hidden"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>-->
-                                </Grid.Resources>
-                                <Grid.LayoutTransform>
-                                    <ScaleTransform ScaleX="{Binding ScreenScale}" ScaleY="{Binding ScreenScale}"/>
-                                </Grid.LayoutTransform>
-                                <!--<Grid.Background>
-                                    <VisualBrush TileMode="Tile" 
-                                                 Viewport="{Binding GridViewPort}" 
-                                                 ViewportUnits="Absolute" 
-                                                 Viewbox="{Binding GridViewPort}" 
-                                                 ViewboxUnits="Absolute">
-                                        <VisualBrush.Visual>
-                                            <Canvas Name="ScreenGridCanvas" Style="{StaticResource ResourceKey=ScreenGridStyle}">
+                        <Grid Margin="-1,0,-1,-1">
+                            <Grid.Background>
+                                <VisualBrush TileMode="Tile" 
+                                                     Viewport="0,0,16,16" 
+                                                     ViewportUnits="Absolute">
+                                    <VisualBrush.Visual>
+                                        <Canvas Name="ScreenGridCanvas">
+                                            <Rectangle Fill="#313131" Canvas.Left="0" Canvas.Top="0" Width="8" Height="8"/>
+                                            <Rectangle Fill="#313131" Canvas.Left="8" Canvas.Top="8" Width="8" Height="8"/>
+                                        </Canvas>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Grid.Background>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" Template="{StaticResource ResourceKey=ScrollViewerDarkControlTemplate}">
+                                <Grid Width="{Binding ScreenSizeX}" Height="{Binding ScreenSizeY}">
+                                    <Grid.Resources>
+                                        <!--<Style x:Key="ScreenGridStyle" TargetType="{x:Type Canvas}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsShowingGrid}" Value="false">
+                                                    <Setter Property="Canvas.Visibility" Value="Hidden"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>-->
+                                    </Grid.Resources>
+                                    <!--<Grid.LayoutTransform>
+                                        <ScaleTransform ScaleX="{Binding ScreenScale}" ScaleY="{Binding ScreenScale}"/>
+                                    </Grid.LayoutTransform>-->
+                                    <Grid.Background>
+                                        <VisualBrush TileMode="Tile" 
+                                                     Viewport="0,0,25,25" 
+                                                     ViewportUnits="Absolute">
+                                            <VisualBrush.Visual>
+                                                <Canvas>
 
-                                                <Line X2="{Binding GridSizeX}" StrokeThickness="1" Stroke="#FF3C3C3C"/>
-                                                <Line Y2="{Binding GridSizeY}" StrokeThickness="1" Stroke="#FF3C3C3C"/>
+                                                    <!--<Line X2="25" StrokeThickness="1" Stroke="Black"/>
+                                                    <Line Y2="25" StrokeThickness="1" Stroke="Black"/>-->
 
-                                            </Canvas>
-                                        </VisualBrush.Visual>
-                                    </VisualBrush>
-                                </Grid.Background>-->
-                                <ItemsControl ItemsSource="{Binding ScreenInstances}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <Canvas/>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemContainerStyle>
-                                        <Style TargetType="ContentPresenter">
-                                            <Setter Property="Canvas.Left" Value="{Binding X}"/>
-                                            <Setter Property="Canvas.Top" Value="{Binding Y}"/>
-                                        </Style>
-                                    </ItemsControl.ItemContainerStyle>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type entity:EntityScreenObjectInstance}">
-                                            <Image Source="{Binding InstanceEntity.TileImageSource}">
-                                                <Image.LayoutTransform>
-                                                    <TranslateTransform X="100" Y="{Binding Y}"/>
-                                                </Image.LayoutTransform>
-                                            </Image>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </Grid>
-                        </ScrollViewer>
-                        <Border BorderBrush="#7a7a7a" BorderThickness="0,1,0,0" Grid.Row="1">
-                            <Grid>
-
-                                <StackPanel Orientation="Horizontal" >
-                                    <CheckBox Margin="10,4,8,3" IsChecked="{Binding IsShowingGrid}"/>
-
-                                    <TextBlock Text="Show Grid" Margin="0,2,40,0"/>
-                                    <TextBlock Text="Grid X:" Margin="0,2,10,0"/>
-                                    <TextBox Width="30" Padding="0" Text="{Binding GridSizeX, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <TextBlock Text="Grid Y:" Margin="15,2,10,0"/>
-                                    <TextBox Width="30" Padding="0" Text="{Binding GridSizeY, UpdateSourceTrigger=PropertyChanged}"/>
-                                </StackPanel>
-                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
-                                    <TextBlock Text="Zoom" Margin="0,1,10,0"/>
-                                    <Slider Name="SlideValue" Width="100" Value="{Binding ScreenZoom}" IsSnapToTickEnabled="True" Ticks="50,100,150,200,100,150,200" Maximum="200" Minimum="50"/>
-                                    <TextBlock Text="{Binding Value, ElementName=SlideValue}" Margin="5,1,0,0" Width="20"/>
-                                    <TextBlock Text="%" Margin="0,1,10,0"/>
-                                </StackPanel>
-
-                            </Grid>
-                        </Border>
+                                                </Canvas>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Grid.Background>
+                                    <ItemsControl ItemsSource="{Binding ScreenInstances}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <Canvas/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemContainerStyle>
+                                            <Style TargetType="ContentPresenter">
+                                                <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                                                <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                                            </Style>
+                                        </ItemsControl.ItemContainerStyle>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type entity:EntityScreenObjectInstance}">
+                                                <Image Source="{Binding InstanceEntity.TileImageSource}">
+                                                    <!--<Image.LayoutTransform>
+                                                        <TranslateTransform X="100" Y="{Binding Y}"/>
+                                                    </Image.LayoutTransform>-->
+                                                </Image>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Grid>
+                            </ScrollViewer>
+                        </Grid>
                     </Grid>
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>
+        <!--TODO: Seperate into own container style-->
+        <Border BorderBrush="#7a7a7a" BorderThickness="0,0,0,0" Grid.Row="1">
+            <Grid Background="#313131">
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding OpenScreens.Count, Converter={StaticResource GreaterThanConverter}, ConverterParameter=0}" Value="True">
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </DataTrigger>     
+                            <DataTrigger Binding="{Binding OpenScreens.Count}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Margin="10,4,8,3" IsChecked="{Binding ShowGrid}"/>
 
+                    <TextBlock Text="Show Grid" Margin="0,2,40,0"/>
+                    <TextBlock Text="Grid X:" Margin="0,2,10,0"/>
+                    <TextBox Width="30" Padding="0" Text="{Binding GridSizeX, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Grid Y:" Margin="15,2,10,0"/>
+                    <TextBox Width="30" Padding="0" Text="{Binding GridSizeY, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
+                    <TextBlock Text="Zoom" Margin="0,1,10,0"/>
+                    <Slider Name="SlideValue" Width="100" Value="{Binding ScreenScale}" IsSnapToTickEnabled="True" Ticks="50,100,150,200,100,150,200" Maximum="200" Minimum="50"/>
+                    <TextBlock Text="{Binding Value, ElementName=SlideValue}" Margin="5,1,0,0" Width="20"/>
+                    <TextBlock Text="%" Margin="0,1,10,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

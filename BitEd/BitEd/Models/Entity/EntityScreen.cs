@@ -20,7 +20,10 @@ namespace BitEd.Models.Entity
         public EntityScreen(string name, EntityNode parent)
             :base(parent, EntityType.Screen,name)
         {
+            //Default values
             Header = "Test Screen";
+            ScreenSizeX = 320;
+            ScreenSizeY = 280;
         }
     }
 }

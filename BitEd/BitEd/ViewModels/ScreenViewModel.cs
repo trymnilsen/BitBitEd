@@ -20,6 +20,7 @@ namespace BitEd.ViewModels
         private int screenRotation;
         private double screenScale;
         private bool showGrid;
+        private bool canEditOptions;
 
         private EntityScreen selectedScreenTab;
         public int GridSizeX {
@@ -76,8 +77,9 @@ namespace BitEd.ViewModels
         public ScreenViewModel()
         {
             OpenScreens = new ObservableCollection<EntityScreen>();
-            //OpenScreens.Add(new EntityScreen());
-            //OpenScreens.Add(new EntityScreen());
+            OpenScreens.Add(new EntityScreen("Tesg",null));
+            OpenScreens.Add(new EntityScreen("Too",null));
+            SelectedScreen = OpenScreens[0];
             Messenger.Default.Register<OpenItemMessage>(this, screenOpened);
         }
         void screenOpened(OpenItemMessage message)
