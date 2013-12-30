@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator"/>
             <converter:GreaterThanConverter x:Key="GreaterThanConverter"/>
+            <converter:MultiplyByValueConverter x:Key="Mutliplyonverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/EditorControlContainerStyle.xaml"/>
                 <ResourceDictionary Source="Style/ListViewStyle.xaml"/>

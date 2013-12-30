@@ -11,7 +11,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="25px"/>
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=TabItemDarkStyle}"/>
@@ -43,8 +42,10 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            <RowDefinition Height="21"/>
+                            <RowDefinition Height="25px"/>
                         </Grid.RowDefinitions>
+                        <!--Sizing logic of ContentControll makes it hard use as background, using a grid instead.. Stretchy-->
+                        <!-- Background-->
                         <Grid Margin="-1,0,-1,-1">
                             <Grid.Background>
                                 <VisualBrush TileMode="Tile" 
@@ -59,7 +60,7 @@
                                 </VisualBrush>
                             </Grid.Background>
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" Template="{StaticResource ResourceKey=ScrollViewerDarkControlTemplate}">
-                                <Grid Width="{Binding ScreenSizeX}" Height="{Binding ScreenSizeY}">
+                                <Grid Width="{Binding ScreenSizeX}" Height="{Binding ScreenSizeY}" Background="#515151" Margin="128">
                                     <Grid.Resources>
                                         <!--<Style x:Key="ScreenGridStyle" TargetType="{x:Type Canvas}">
                                             <Style.Triggers>
@@ -69,83 +70,88 @@
                                             </Style.Triggers>
                                         </Style>-->
                                     </Grid.Resources>
-                                    <!--<Grid.LayoutTransform>
+                                    <Grid.LayoutTransform>
                                         <ScaleTransform ScaleX="{Binding ScreenScale}" ScaleY="{Binding ScreenScale}"/>
-                                    </Grid.LayoutTransform>-->
-                                    <Grid.Background>
-                                        <VisualBrush TileMode="Tile" 
-                                                     Viewport="0,0,25,25" 
-                                                     ViewportUnits="Absolute">
-                                            <VisualBrush.Visual>
-                                                <Canvas>
+                                    </Grid.LayoutTransform>
+                                    <!--Grid-->
+                                    <Grid>
+                                        <Grid.Background>
+                                            <VisualBrush TileMode="Tile" 
+                                                            Viewport="0,0,64,64" 
+                                                            ViewportUnits="Absolute">
+                                                <VisualBrush.Visual>
+                                                    <Canvas>
 
-                                                    <!--<Line X2="25" StrokeThickness="1" Stroke="Black"/>
-                                                    <Line Y2="25" StrokeThickness="1" Stroke="Black"/>-->
+                                                        <Line X2="64" StrokeThickness="1" Stroke="Gray"/>
+                                                        <Line Y2="64" StrokeThickness="1" Stroke="Gray"/>
 
-                                                </Canvas>
-                                            </VisualBrush.Visual>
-                                        </VisualBrush>
-                                    </Grid.Background>
-                                    <ItemsControl ItemsSource="{Binding ScreenInstances}">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <Canvas/>
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemContainerStyle>
-                                            <Style TargetType="ContentPresenter">
-                                                <Setter Property="Canvas.Left" Value="{Binding X}"/>
-                                                <Setter Property="Canvas.Top" Value="{Binding Y}"/>
-                                            </Style>
-                                        </ItemsControl.ItemContainerStyle>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate DataType="{x:Type entity:EntityScreenObjectInstance}">
-                                                <Image Source="{Binding InstanceEntity.TileImageSource}">
-                                                    <!--<Image.LayoutTransform>
-                                                        <TranslateTransform X="100" Y="{Binding Y}"/>
-                                                    </Image.LayoutTransform>-->
-                                                </Image>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </Grid>
+                                                    </Canvas>
+                                                </VisualBrush.Visual>
+                                            </VisualBrush>
+                                        </Grid.Background>
+                                        <ItemsControl ItemsSource="{Binding ScreenInstances}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Canvas/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style TargetType="ContentPresenter">
+                                                    <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                                                    <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate DataType="{x:Type entity:EntityScreenObjectInstance}">
+                                                    <Image Source="{Binding InstanceEntity.TileImageSource}">
+                                                        <!--<Image.LayoutTransform>
+                                                            <TranslateTransform X="100" Y="{Binding Y}"/>
+                                                        </Image.LayoutTransform>-->
+                                                    </Image>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        </Grid>
+                                    <!--~Grid-->
+                                    </Grid>
+                                <!-- ~Screen Size Area-->
                             </ScrollViewer>
-                        </Grid>
+                        </Grid><!-- ~Background-->
+                        <Border BorderBrush="#7a7a7a" BorderThickness="0,0,0,0" Grid.Row="1">
+                            <Grid Background="#313131">
+                                <Grid.Style>
+                                    <Style TargetType="{x:Type Grid}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding OpenScreens.Count, Converter={StaticResource GreaterThanConverter}, ConverterParameter=0}" Value="True">
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding OpenScreens.Count}" Value="0">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Margin="10,4,8,3" IsChecked="{Binding ShowGrid}"/>
+
+                                    <TextBlock Text="Show Grid" Margin="0,2,40,0"/>
+                                    <TextBlock Text="Grid X:" Margin="0,2,10,0"/>
+                                    <TextBox Width="30" Padding="0" Text="{Binding GridSizeX, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock Text="Grid Y:" Margin="15,2,10,0"/>
+                                    <TextBox Width="30" Padding="0" Text="{Binding GridSizeY, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
+                                    <TextBlock Text="Zoom" Margin="0,1,10,0"/>
+                                    <Slider Name="SlideValue" Width="100" Value="{Binding ScreenScale}" IsSnapToTickEnabled="True" TickFrequency="0.1" Maximum="8" Minimum="0.5"/>
+                                    <TextBlock Text="{Binding Value, Converter={StaticResource Mutliplyonverter}, ConverterParameter=100, ElementName=SlideValue}" Margin="5,1,0,0" Width="20"/>
+                                    <TextBlock Text="%" Margin="0,1,10,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>
         <!--TODO: Seperate into own container style-->
-        <Border BorderBrush="#7a7a7a" BorderThickness="0,0,0,0" Grid.Row="1">
-            <Grid Background="#313131">
-                <Grid.Style>
-                    <Style TargetType="{x:Type Grid}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding OpenScreens.Count, Converter={StaticResource GreaterThanConverter}, ConverterParameter=0}" Value="True">
-                                <Setter Property="IsEnabled" Value="True"/>
-                            </DataTrigger>     
-                            <DataTrigger Binding="{Binding OpenScreens.Count}" Value="0">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="10,4,8,3" IsChecked="{Binding ShowGrid}"/>
-
-                    <TextBlock Text="Show Grid" Margin="0,2,40,0"/>
-                    <TextBlock Text="Grid X:" Margin="0,2,10,0"/>
-                    <TextBox Width="30" Padding="0" Text="{Binding GridSizeX, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="Grid Y:" Margin="15,2,10,0"/>
-                    <TextBox Width="30" Padding="0" Text="{Binding GridSizeY, UpdateSourceTrigger=PropertyChanged}"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
-                    <TextBlock Text="Zoom" Margin="0,1,10,0"/>
-                    <Slider Name="SlideValue" Width="100" Value="{Binding ScreenScale}" IsSnapToTickEnabled="True" Ticks="50,100,150,200,100,150,200" Maximum="200" Minimum="50"/>
-                    <TextBlock Text="{Binding Value, ElementName=SlideValue}" Margin="5,1,0,0" Width="20"/>
-                    <TextBlock Text="%" Margin="0,1,10,0"/>
-                </StackPanel>
-            </Grid>
-        </Border>
     </Grid>
 </UserControl>

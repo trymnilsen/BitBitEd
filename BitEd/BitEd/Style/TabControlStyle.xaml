@@ -15,13 +15,13 @@
                         </Grid.ColumnDefinitions>
                         <DockPanel Background="#313131">
                             <WrapPanel IsItemsHost="True" DockPanel.Dock="Left"/>
-                            <!--<Border Name="TabAreaBottomBorder" BorderBrush="#535353" BorderThickness="0,0,0,1" DockPanel.Dock="Right">-->
+                            <Border Name="TabAreaBottomBorder" BorderBrush="#535353" BorderThickness="0,0,0,1" DockPanel.Dock="Right">
                                 <Border BorderThickness="0,0,0,1" BorderBrush="#131313">
                                     <Border BorderThickness="1,1,1,0" BorderBrush="#3f3f3f">
                                         <Label Background="#313131"/>
                                     </Border>
                                 </Border>
-                            <!--</Border>-->
+                            </Border>
                         </DockPanel>
                         <Border Name="ContentOrangeBorder" BorderBrush="#535353" BorderThickness="1,0,1,1" Grid.Row="1">
                             <ContentPresenter ContentSource="SelectedContent" Margin="0"/>

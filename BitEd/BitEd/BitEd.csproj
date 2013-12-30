@@ -90,6 +90,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\GreaterThanConverter.cs" />
+    <Compile Include="Converter\MultiplyByValueConverter.cs" />
     <Compile Include="Converter\TypeToStringConverter.cs" />
     <Compile Include="Core\WaitCursorHelper.cs" />
     <Compile Include="CustomControl\DropDownButton.xaml.cs">

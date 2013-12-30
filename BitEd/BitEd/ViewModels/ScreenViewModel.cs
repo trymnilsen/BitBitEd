@@ -15,51 +15,9 @@ namespace BitEd.ViewModels
 {
     public class ScreenViewModel:ViewModelBase
     {
-        private int gridSizeX;
-        private int gridSizeY;
-        private int screenRotation;
-        private double screenScale;
-        private bool showGrid;
         private bool canEditOptions;
 
         private EntityScreen selectedScreenTab;
-        public int GridSizeX {
-            get { return gridSizeX; }
-            set
-            {
-                if(value!=gridSizeX)
-                {
-                    gridSizeX = value;
-                    RaisePropertyChanged("GridSizeX");
-                }
-            }
-        }
-        public int GridSizeY
-        {
-            get { return gridSizeY; }
-            set
-            {
-                if (value != gridSizeY)
-                {
-                    gridSizeY = value;
-                    RaisePropertyChanged("GridSizeY");
-                }
-            }
-        }
-        public int ScreenRotation
-        {
-            get { return screenRotation; }
-            set
-            {
-                if (value != screenRotation)
-                {
-                    screenRotation = value;
-                    RaisePropertyChanged("ScreenRotation");
-                }
-            }
-        }
-        public double ScreenScale { get; set; }
-        public bool ShowGrid { get; set; }
 
         public EntityScreen SelectedScreen {
             get { return selectedScreenTab; }
