@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="StatusMessagesWindow" Height="300" Width="500"
         DataContext="{Binding StatusBarVM,Source={StaticResource Locator}}"
-        Background="#404040">
+        Background="LightGray">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="100"/>
@@ -11,18 +11,18 @@
             <RowDefinition MinHeight="40"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding StatusMessageCollection}" Background="#404040" BorderThickness="0">
+        <ListView ItemsSource="{Binding StatusMessageCollection}" Background="LightGray">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Time" 
-            DisplayMemberBinding="{Binding TimeStamp}"/>
+            DisplayMemberBinding="{Binding TimeStamp}" Width="100"/>
                     <GridViewColumn Header="Message"  
-            DisplayMemberBinding="{Binding MessageString}" />
+            DisplayMemberBinding="{Binding MessageString}" Width="300"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" 
-                            HorizontalAlignment="Stretch" Background="#131313"/>
+                            HorizontalAlignment="Stretch" Background="Gray"/>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
