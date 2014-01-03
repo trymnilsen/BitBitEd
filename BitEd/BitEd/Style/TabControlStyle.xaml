@@ -15,11 +15,9 @@
                         </Grid.ColumnDefinitions>
                         <DockPanel Background="#313131">
                             <WrapPanel IsItemsHost="True" DockPanel.Dock="Left"/>
-                            <Border Name="TabAreaBottomBorder" BorderBrush="#535353" BorderThickness="0,0,0,1" DockPanel.Dock="Right">
-                                <Border BorderThickness="0,0,0,1" BorderBrush="#131313">
-                                    <Border BorderThickness="1,1,1,0" BorderBrush="#3f3f3f">
-                                        <Label Background="#313131"/>
-                                    </Border>
+                            <Border BorderThickness="1,0,1,1" BorderBrush="#131313">
+                                <Border BorderThickness="0,1,0,0" BorderBrush="#3f3f3f">
+                                    <Label Background="#313131"/>
                                 </Border>
                             </Border>
                         </DockPanel>
@@ -39,15 +37,13 @@
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <!-- The Grid helps defining the general height of TabItems. -->
                     <Grid Height="18" Name="TabItemContainer">
-                        <Border Name="TabItemBottomBorder" BorderBrush="#535353" BorderThickness="0,0,0,1">
-                            <Border Name="TabItemSeperatorBorder" BorderThickness="1,0,1,1" BorderBrush="#131313">
-                                <Border Name="TabItemOutlineBorder" BorderBrush="#3f3f3f" BorderThickness="1,1,1,0">
-                                    <ContentPresenter x:Name="ContentSite"
+                        <Border Name="TabItemSeperatorBorder" BorderThickness="1,0,0,1" BorderBrush="#131313">
+                            <Border Name="TabItemOutlineBorder" BorderBrush="#3f3f3f" BorderThickness="0,1,0,0">
+                                <ContentPresenter x:Name="ContentSite"
                                                 HorizontalAlignment="Center"
                                                 ContentSource="Header"
                                                 Margin="5,0,8,0"
                                                 RecognizesAccessKey="True"/>
-                                </Border>
                             </Border>
                         </Border>
                     </Grid>
@@ -55,13 +51,13 @@
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="TabItemContainer" Property="Background" Value="#404040"/>
                             <!--We fix the problem with the orange border being cut of in the last pixel in the corner but literally swapping the border order on selection-->
-                            <Setter TargetName="TabItemBottomBorder" Property="BorderBrush" Value="#535353"/>
-                            <Setter TargetName="TabItemBottomBorder" Property="BorderThickness" Value="1,1,1,0"/>
+                            <!--<Setter TargetName="TabItemBottomBorder" Property="BorderBrush" Value="Red"/>-->
+                            <!--<Setter TargetName="TabItemBottomBorder" Property="BorderThickness" Value="1,1,1,0"/>-->
 
-                            <Setter TargetName="TabItemOutlineBorder" Property="BorderBrush" Value="#404040"/>
-                            <Setter TargetName="TabItemOutlineBorder" Property="BorderThickness" Value="0,0,0,1"/>
-                            <!--Set color of Seperator to color of tab / Making it look like its removed-->
-                            <Setter TargetName="TabItemSeperatorBorder" Property="BorderBrush" Value="#404040"/>
+                            <Setter TargetName="TabItemOutlineBorder" Property="BorderBrush" Value="#4f4f4f"/>
+                            <!--<Setter TargetName="TabItemOutlineBorder" Property="BorderThickness" Value="0,0,0,1"/>-->
+                            <!--Set color of Seperator to color of tab / Making it look like its removed--><!--
+                            <Setter TargetName="TabItemSeperatorBorder" Property="BorderBrush" Value="#404040"/>-->
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
