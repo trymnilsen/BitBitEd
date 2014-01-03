@@ -15,7 +15,7 @@
         <Grid.Resources>
             <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=TabItemDarkStyle}"/>
         </Grid.Resources>
-        <TabControl BorderThickness="0" Name="TabControlUnit" ItemsSource="{Binding OpenScreens}" SelectedItem="{Binding SelectedScreen}" Style="{StaticResource ResourceKey=TabControlBaseDarkStyle}">
+        <TabControl BorderThickness="0" ItemsSource="{Binding OpenScreens}" SelectedItem="{Binding SelectedScreen}" Style="{StaticResource ResourceKey=TabControlBaseDarkStyle}">
 
             <TabControl.Resources>
                 <core:BindingProxy x:Key="DataContextProxy" ProxyData="{Binding}"/>
@@ -60,7 +60,7 @@
                                 </VisualBrush>
                             </Grid.Background>
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" Template="{StaticResource ResourceKey=ScrollViewerDarkControlTemplate}">
-                                <Grid Width="{Binding ScreenSizeX}" Height="{Binding ScreenSizeY}" Background="#515151" Margin="128">
+                                <Grid Width="{Binding ScreenSizeX}" Height="{Binding ScreenSizeY}" Background="#515151">
                                     <Grid.Resources>
                                         <!--<Style x:Key="ScreenGridStyle" TargetType="{x:Type Canvas}">
                                             <Style.Triggers>
