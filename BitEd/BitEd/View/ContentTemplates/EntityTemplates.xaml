@@ -5,8 +5,5 @@
         <ResourceDictionary Source="Entities/EntityObjectTemplate.xaml"/>
         <ResourceDictionary Source="Entities/EntityDummyTemplate.xaml"/>
         <ResourceDictionary Source="Entities/EntitySpriteTemplate.xaml"/>
-        <!--Properties-->
-        <ResourceDictionary Source="Properties/StandardTypePropertyTemplate.xaml"/>
-        <ResourceDictionary Source="Properties/SpriteEntityPropertyTemplate.xaml"/>
      </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

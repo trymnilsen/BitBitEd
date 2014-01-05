@@ -53,12 +53,12 @@
         </Border>
         <!--~Generic Item Change-->
         <!-- Properties part -->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Template="{StaticResource ResourceKey=ScrollViewerDarkControlTemplate}">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Template="{StaticResource ScrollViewerDarkControlTemplate}">
         <ContentControl Content="{Binding ActiveNode}" Margin="0,5,0,0">
             <ContentControl.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="ContentTemplates/Templates.xaml"/>
+                        <ResourceDictionary Source="ContentTemplates/EntityTemplates.xaml"/>
                      </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
             </ContentControl.Resources>
@@ -66,9 +66,9 @@
                 <selector:TypeTemplateSelector>
                     <selector:TypeTemplateSelector.Templates>
                         <selector:EntityTemplateCollection>
-                            <selector:EntityTemplate Value="{x:Type entity:EntityObject}" Template="{StaticResource ResourceKey=InspectorEntityObject}"/>
-                            <selector:EntityTemplate Value="{x:Type entity:EntityDummy}" Template="{StaticResource ResourceKey=InspectorEntityDummy}"/>
-                            <selector:EntityTemplate Value="{x:Type entity:EntitySprite}" Template="{StaticResource ResourceKey=InspectorEntitySprite}"/>
+                            <selector:EntityTemplate Value="{x:Type entity:EntityObject}" Template="{StaticResource InspectorEntityObject}"/>
+                            <selector:EntityTemplate Value="{x:Type entity:EntityDummy}" Template="{StaticResource InspectorEntityDummy}"/>
+                            <selector:EntityTemplate Value="{x:Type entity:EntitySprite}" Template="{StaticResource InspectorEntitySprite}"/>
                         </selector:EntityTemplateCollection>
                     </selector:TypeTemplateSelector.Templates>
                 </selector:TypeTemplateSelector>

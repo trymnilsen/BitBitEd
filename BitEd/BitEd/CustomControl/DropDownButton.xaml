@@ -8,9 +8,9 @@
     <Grid>
         <Button Name="ClickButton" Click="Button_Click_1">
             <Button.Style>
-                <Style TargetType="Button">
+                <Style TargetType="{x:Type Button}">
                     <Style.Setters>
-                        <Setter Property="ContextMenu" Value="{DynamicResource ResourceKey=ContextMenuItems}" />
+                        <Setter Property="ContextMenu" Value="{DynamicResource ResourceKey=ContextMenuItems}"/>
                     </Style.Setters>
                 </Style>
             </Button.Style>

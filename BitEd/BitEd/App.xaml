@@ -6,16 +6,28 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <!--
+            ###     VM LOCATOR    ###
+            -->
             <vm:ViewModelLocator x:Key="Locator"/>
+            <!--
+            ###     Converters    ###
+            -->
             <converter:GreaterThanConverter x:Key="GreaterThanConverter"/>
             <converter:MultiplyByValueConverter x:Key="Mutliplyonverter"/>
+            <converter:NullToDefaultValueConverter x:Key="NullToDefaultConverter"/>
+            
             <ResourceDictionary.MergedDictionaries>
+                <!--
+                ###     Styles    ###
+                -->
                 <ResourceDictionary Source="Style/EditorControlContainerStyle.xaml"/>
                 <ResourceDictionary Source="Style/ListViewStyle.xaml"/>
                 <ResourceDictionary Source="Style/TabControlStyle.xaml"/>
                 <ResourceDictionary Source="Style/ScrollbarStyle.xaml"/>
                 <ResourceDictionary Source="Style/TextButtonTemplate.xaml"/>
                 <ResourceDictionary Source="Style/ExpanderTemplates.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

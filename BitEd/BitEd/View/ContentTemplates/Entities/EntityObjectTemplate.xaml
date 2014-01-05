@@ -4,6 +4,7 @@
                     xmlns:selector="clr-namespace:BitEd.Selectors"
                     xmlns:actions="clr-namespace:BitEd.Models.Action.Actions"
                     xmlns:action="clr-namespace:BitEd.Models.Action"
+                    xmlns:entity="clr-namespace:BitEd.Models.Entity"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:event="clr-namespace:BitEd.Models.Event"
                     xmlns:core="clr-namespace:BitEd.Core"
@@ -61,29 +62,29 @@
                             <Expander.Resources>
                                 <core:BindingProxy x:Key="ContextMenuProxy" ProxyData="{Binding}"/>
                             </Expander.Resources>
+                            <Expander.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Remove Event"/>
+                                        <MenuItem Header="Add Event.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
+                                            <MenuItem.ItemContainerStyle>
+                                                <Style TargetType="{x:Type MenuItem}">
+                                                    <Setter Property="Command" Value="{Binding InspectorVM.AddEventToObject, Source={StaticResource Locator}}" />
+                                                    <Setter Property="CommandParameter" Value="{Binding}" />
+                                                </Style>
+                                            </MenuItem.ItemContainerStyle>
+                                        </MenuItem>
+                                        <MenuItem Header="New Action.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableActions}">
+                                            <MenuItem.ItemContainerStyle>
+                                                <Style TargetType="{x:Type MenuItem}">
+                                                    <Setter Property="Command" Value="{Binding ProxyData.AddActionToEvent, Source={StaticResource ResourceKey=ContextMenuProxy}}" />
+                                                    <Setter Property="CommandParameter" Value="{Binding}" />
+                                                </Style>
+                                            </MenuItem.ItemContainerStyle>
+                                        </MenuItem>
+                                    </ContextMenu>
+                            </Expander.ContextMenu>
                             <Expander.Header>
                                 <TextBlock Text="{Binding Name}">
-                                    <TextBlock.ContextMenu>
-                                        <ContextMenu>
-                                            <MenuItem Header="Remove Event"/>
-                                            <MenuItem Header="Add Event.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableEvents}">
-                                                <MenuItem.ItemContainerStyle>
-                                                    <Style TargetType="{x:Type MenuItem}">
-                                                        <Setter Property="Command" Value="{Binding InspectorVM.AddEventToObject, Source={StaticResource Locator}}" />
-                                                        <Setter Property="CommandParameter" Value="{Binding}" />
-                                                    </Style>
-                                                </MenuItem.ItemContainerStyle>
-                                            </MenuItem>
-                                            <MenuItem Header="New Action.." ItemsSource="{x:Static entityModels:EntityCollections.AvailableActions}">
-                                                <MenuItem.ItemContainerStyle>
-                                                    <Style TargetType="{x:Type MenuItem}">
-                                                        <Setter Property="Command" Value="{Binding ProxyData.AddActionToEvent, Source={StaticResource ResourceKey=ContextMenuProxy}}" />
-                                                        <Setter Property="CommandParameter" Value="{Binding}" />
-                                                    </Style>
-                                                </MenuItem.ItemContainerStyle>
-                                            </MenuItem>
-                                        </ContextMenu>
-                                    </TextBlock.ContextMenu>
                                 </TextBlock>
                             </Expander.Header>
                             <!-- Actions-->
@@ -101,7 +102,26 @@
                                                 <ItemsControl ItemsSource="{Binding ActionProperties}">
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate DataType="{x:Type action:ActionProperty}">
-                                                            <TextBlock Text="{Binding}"/>
+                                                            <DockPanel>
+                                                                <TextBlock Text="{Binding Name}" Width="100px"/>
+                                                                <!--Choose the right template with our template selector-->
+
+                                                                <ContentControl Content="{Binding Value}" >
+                                                                    <ContentControl.Resources>
+                                                                        <ResourceDictionary Source="../ActionProperties.xaml"/>
+                                                                    </ContentControl.Resources>
+                                                                    <ContentControl.ContentTemplateSelector>
+                                                                        <selector:TypeTemplateSelector>
+                                                                            <selector:TypeTemplateSelector.Templates>
+                                                                                <selector:EntityTemplateCollection>
+                                                                                    <!--<selector:EntityTemplate Value="{x:Type entity:EntitySprite}" Template="{StaticResource ResourceKey=SpriteEntityPropertyTemplate}"/>-->
+                                                                                    <selector:EntityTemplate Value="{x:Type system:Int32}" Template="{StaticResource ResourceKey=SpriteEntityPropertyTemplate}"/>
+                                                                                </selector:EntityTemplateCollection>
+                                                                            </selector:TypeTemplateSelector.Templates>
+                                                                        </selector:TypeTemplateSelector>
+                                                                    </ContentControl.ContentTemplateSelector>
+                                                                </ContentControl>
+                                                            </DockPanel>
                                                         </DataTemplate>
                                                     </ItemsControl.ItemTemplate>
                                                 </ItemsControl>

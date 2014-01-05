@@ -15,6 +15,7 @@ namespace BitEd.Models.Action.Actions
             ActionProperty assetProperty = new ActionProperty();
             assetProperty.Name = "Foo";
             this.ActionProperties.Add(assetProperty);
+            assetProperty.Value = 32;
         }
     }
 }

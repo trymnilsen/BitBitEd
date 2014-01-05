@@ -91,6 +91,7 @@
     </ApplicationDefinition>
     <Compile Include="Converter\GreaterThanConverter.cs" />
     <Compile Include="Converter\MultiplyByValueConverter.cs" />
+    <Compile Include="Converter\NullToDefaultValueConverter.cs" />
     <Compile Include="Converter\TypeToStringConverter.cs" />
     <Compile Include="Core\WaitCursorHelper.cs" />
     <Compile Include="CustomControl\DropDownButton.xaml.cs">
@@ -176,6 +177,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ContentTemplates\ActionProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ContentTemplates\Entities\EntityDummyTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,7 +197,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ContentTemplates\Templates.xaml">
+    <Page Include="View\ContentTemplates\EntityTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
